@@ -413,7 +413,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    293
+                    328
                 </div>
                 
 
@@ -440,13 +440,15 @@
 <p>1.参数为节点，返回值为以该节点为根节点的树的高度（不是平衡二叉树返回-1）</p>
 <p>2.空节点就终止</p>
 <p>3.左子树高度，右子树高度，相差是否&lt;&#x3D;1</p>
-<h2 id="小林coding"><a href="#小林coding" class="headerlink" title="小林coding"></a>小林coding</h2><h3 id="HTTP-1-1、HTTP-2、HTTP-3-演变"><a href="#HTTP-1-1、HTTP-2、HTTP-3-演变" class="headerlink" title="HTTP&#x2F;1.1、HTTP&#x2F;2、HTTP&#x2F;3 演变"></a>HTTP&#x2F;1.1、HTTP&#x2F;2、HTTP&#x2F;3 演变</h3><h4 id="HTTP-1-1-相比-HTTP-1-0-提高了什么性能"><a href="#HTTP-1-1-相比-HTTP-1-0-提高了什么性能" class="headerlink" title="HTTP&#x2F;1.1 相比 HTTP&#x2F;1.0 提高了什么性能"></a>HTTP&#x2F;1.1 相比 HTTP&#x2F;1.0 提高了什么性能</h4><p>（1）使用长连接</p>
-<p>（2）支持管道网络传输（请求发出去不必等返回就可再发送请求）</p>
-<h4 id="HTTP-2-做了什么优化？"><a href="#HTTP-2-做了什么优化？" class="headerlink" title="HTTP&#x2F;2 做了什么优化？"></a>HTTP&#x2F;2 做了什么优化？</h4><p>HTTP&#x2F;2是基于https</p>
-<p>（1）压缩头部：用索引号代替重复字段</p>
-<p>（2）二进制格式：head和body都变成二进制（帧）</p>
-<p>（3）并发传输：同一个tcp连接传多个stream（多个头＋体），即并行交错进行请求和响应，避免响应的队头阻塞</p>
-<p>（4）服务器推送：服务器主动发送信息给客户端</p>
+<h2 id="小林coding"><a href="#小林coding" class="headerlink" title="小林coding"></a>小林coding</h2><h3 id="HTTP-1-1、HTTP-2、HTTP-3-演变"><a href="#HTTP-1-1、HTTP-2、HTTP-3-演变" class="headerlink" title="HTTP&#x2F;1.1、HTTP&#x2F;2、HTTP&#x2F;3 演变"></a>HTTP&#x2F;1.1、HTTP&#x2F;2、HTTP&#x2F;3 演变</h3><h4 id="HTTP-3-做了哪些优化？"><a href="#HTTP-3-做了哪些优化？" class="headerlink" title="HTTP&#x2F;3 做了哪些优化？"></a>HTTP&#x2F;3 做了哪些优化？</h4><p>将TCP协议变成UDP协议，并且使用基于UDP的QUIC协议</p>
+<p>QUIC特点</p>
+<ul>
+<li>无队头堵塞（stream丢包，只堵塞这个流，不像HTTP&#x2F;2堵塞TCP整个队头）</li>
+<li>更快的连接方式（HTTP&#x2F;2先TCP握手，再TLS握手；HTTP&#x2F;3，QUIC握手里面包括了TLS内容）</li>
+<li>连接迁移（从数据连接切换到WIFI连接因为IP改变，所以TCP连接重新建立，耗时；HTTP&#x2F;3通过<strong>连接ID</strong>绑定通信端点，只要保留原上下文（连接ID，TLS密钥等），就可以继续原链接。）</li>
+</ul>
+<p>QUIC是UDP上：伪TCP+TLS+HTTP&#x2F;2的多路复用协议</p>
+<p>注：<strong>SSL&#x2F;TLS1.2</strong>需要4次握手，<strong>SSL&#x2F;TLS1.3</strong>只需要3次握手</p>
 
                 
             </div>
