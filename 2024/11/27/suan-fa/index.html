@@ -372,6 +372,10 @@
                                 <span class="chip bg-color">算法</span>
                             </a>
                         
+                            <a href="/tags/Golang/">
+                                <span class="chip bg-color">Golang</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -400,14 +404,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-11-27
+                    2024-11-28
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.3k
+                    2.4k
                 </div>
                 
 
@@ -418,6 +422,9 @@
         </div>
         <hr class="clearfix">
 
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
         
 
         
@@ -516,6 +523,10 @@
 <p>1.参数为节点，返回值为以该节点为根节点的树的高度（不是平衡二叉树返回-1）</p>
 <p>2.空节点就终止</p>
 <p>3.左子树高度，右子树高度，相差是否&lt;&#x3D;1</p>
+<h4 id="14-二叉树的所有路径"><a href="#14-二叉树的所有路径" class="headerlink" title="14. 二叉树的所有路径"></a>14. 二叉树的所有路径</h4><p>在go语言中，append相当于新开辟地址，如果里面是b &#x3D; append(b,…)这种，在递归中会回溯，只作用在当前函数，不会影响外部函数，外部原切片地址没有增加。使用*b时就会对原切片进行改变。</p>
+<h4 id="15-左子树之和"><a href="#15-左子树之和" class="headerlink" title="15. 左子树之和"></a>15. 左子树之和</h4><p>递归遍历变式，相当于在递归遍历的基础上加上一些判断条件，这道题就是加入判断</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root.Left != <span class="literal">nil</span> &amp;&amp; root.Left.Left == <span class="literal">nil</span> &amp;&amp; root.Left.Right == <span class="literal">nil</span></span><br></pre></td></tr></table></figure>
+
 
                 
             </div>
@@ -586,6 +597,10 @@
                             
                                 <a href="/tags/%E7%AE%97%E6%B3%95/">
                                     <span class="chip bg-color">算法</span>
+                                </a>
+                            
+                                <a href="/tags/Golang/">
+                                    <span class="chip bg-color">Golang</span>
                                 </a>
                             
                         </div>
@@ -782,6 +797,9 @@
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
