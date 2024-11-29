@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>每日学习（3）</title>
+      <link href="/2024/11/29/mei-ri-xue-xi-3/"/>
+      <url>/2024/11/29/mei-ri-xue-xi-3/</url>
+      
+        <content type="html"><![CDATA[<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><h4 id="16-找树左下角的值"><a href="#16-找树左下角的值" class="headerlink" title="16. 找树左下角的值"></a>16. 找树左下角的值</h4><p>先找出最大深度，再左边。可以先dfs，再用队列</p><h4 id="17-路径总和"><a href="#17-路径总和" class="headerlink" title="17. 路径总和"></a>17. 路径总和</h4><p>同15一样，遍历基础上加判断条件</p><h2 id="小林coding"><a href="#小林coding" class="headerlink" title="小林coding"></a>小林coding</h2><h3 id="HTTPS-RSA握手解析"><a href="#HTTPS-RSA握手解析" class="headerlink" title="HTTPS RSA握手解析"></a>HTTPS RSA握手解析</h3><p><strong>RTT</strong>(往返时延)：发送端发送一个数据包到接收端，接收端返回确认包到发送端的整个时间。</p><p>整个TLS握手过程前面已经总结</p><p>补充以下：</p><ul><li><p>四次握手，需要2个RTT时延</p></li><li><p>密码套件基本形式为：密钥交换算法 + 签名算法 + 对称加密算法 + 摘要算法</p></li><li><p>CA进行签名过程为：对持有者的公钥等信息进行打包，然后对这个包进行hash计算，得到hash值，然后用私钥对这个值进行加密。</p></li><li><p>第三次握手，最后客户端发送的摘要信息，使用的是会话密钥加密。目的是验证加密通信是否可用和前面整个握手信息是否有被篡改。</p></li><li><p>RSA不支持前向保密，私钥一旦泄密，以前的所有TLS密文都被破解。</p></li></ul><p>前向保密：即使密钥被泄露，过去的信息也不会被解密。每次通信生成的都是临时密钥。</p><h3 id="HTTPS-ECDHE-握手解析"><a href="#HTTPS-ECDHE-握手解析" class="headerlink" title="HTTPS ECDHE 握手解析"></a>HTTPS ECDHE 握手解析</h3><p>算法核心思想：离散对数</p><p>ECDHE算法具有前向安全，现在被广泛使用。</p><p>DH-&gt;DHE-&gt;ECDHE</p><p>ECDHE算法实在DHE算法基础上使用了ECC椭圆曲线特性，用更少的计算量计算出公钥和最终的会话密钥。</p><p>TLS第一次握手，客户端：（1）TLS版本号（2）支持的密码套件（3）生成的随机数</p><p>TLS第二次握手，服务器:（1）确认TLS版本号（2）随机数（3）选择密码套件（4）数字证书（5）发送Server Key Exchange 消息</p><ul><li>Server Key Exchange 消息包括：<ul><li>选好了椭圆曲线（基点G也确定）</li><li>服务端椭圆曲线公钥</li></ul></li></ul><p>TLS第三次握手，客户端:（1）发送Client Key Exchange消息（2）发送后续改用对称算法加密通信（3）摘要信息使用对称密钥加密发送</p><ul><li>Client Key Exchange消息包括：<ul><li>客户端椭圆曲线公钥</li></ul></li></ul><p>TLS第四次握手，服务端:（1）发送改用对称算法加密通信（2）摘要信息使用对称密钥加密发送</p><p>注：</p><ol><li><p>会话密钥&#x3D;客户端随机数+服务端随机数+椭圆曲线生成的共享密钥</p></li><li><p>RSA在TLS完成四次握手后才能进行应用数据的传输；而ECDHE算法，客户端可以不等服务器最后一次TLS握手就进行加密HTTP数据传送，节省一个RTT时间。</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 每日学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LeetCode（二叉树） </tag>
+            
+            <tag> 小林coding（计算机网络） </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Go-Vue通用后台管理</title>
       <link href="/2024/11/28/go-vue/"/>
       <url>/2024/11/28/go-vue/</url>
@@ -58,33 +85,6 @@
             <tag> 小林coding（计算机网络） </tag>
             
             <tag> go-vue </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>每日学习（3）</title>
-      <link href="/2024/11/28/mei-ri-xue-xi-3/"/>
-      <url>/2024/11/28/mei-ri-xue-xi-3/</url>
-      
-        <content type="html"><![CDATA[<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><h4 id="16-找树左下角的值"><a href="#16-找树左下角的值" class="headerlink" title="16. 找树左下角的值"></a>16. 找树左下角的值</h4><p>先找出最大深度，再左边。可以先dfs，再用队列</p><h4 id="17-路径总和"><a href="#17-路径总和" class="headerlink" title="17. 路径总和"></a>17. 路径总和</h4><p>同15一样，遍历基础上加判断条件</p><h2 id="小林coding"><a href="#小林coding" class="headerlink" title="小林coding"></a>小林coding</h2><h3 id="HTTPS-RSA握手解析"><a href="#HTTPS-RSA握手解析" class="headerlink" title="HTTPS RSA握手解析"></a>HTTPS RSA握手解析</h3><p><strong>RTT</strong>(往返时延)：发送端发送一个数据包到接收端，接收端返回确认包到发送端的整个时间。</p><p>整个TLS握手过程前面已经总结</p><p>补充以下：</p><ul><li><p>四次握手，需要2个RTT时延</p></li><li><p>密码套件基本形式为：密钥交换算法 + 签名算法 + 对称加密算法 + 摘要算法</p></li><li><p>CA进行签名过程为：对持有者的公钥等信息进行打包，然后对这个包进行hash计算，得到hash值，然后用私钥对这个值进行加密。</p></li><li><p>第三次握手，最后客户端发送的摘要信息，使用的是会话密钥加密。目的是验证加密通信是否可用和前面整个握手信息是否有被篡改。</p></li><li><p>RSA不支持前向保密，私钥一旦泄密，以前的所有TLS密文都被破解。</p></li></ul><p>前向保密：即使密钥被泄露，过去的信息也不会被解密。每次通信生成的都是临时密钥。</p><h3 id="HTTPS-ECDHE-握手解析"><a href="#HTTPS-ECDHE-握手解析" class="headerlink" title="HTTPS ECDHE 握手解析"></a>HTTPS ECDHE 握手解析</h3><p>算法核心思想：离散对数</p><p>ECDHE算法具有前向安全，现在被广泛使用。</p><p>DH-&gt;DHE-&gt;ECDHE</p><p>ECDHE算法实在DHE算法基础上使用了ECC椭圆曲线特性，用更少的计算量计算出公钥和最终的会话密钥。</p><p>TLS第一次握手，客户端：（1）TLS版本号（2）支持的密码套件（3）生成的随机数</p><p>TLS第二次握手，服务器:（1）确认TLS版本号（2）随机数（3）选择密码套件（4）数字证书（5）发送Server Key Exchange 消息</p><ul><li>Server Key Exchange 消息包括：<ul><li>选好了椭圆曲线（基点G也确定）</li><li>服务端椭圆曲线公钥</li></ul></li></ul><p>TLS第三次握手，客户端:（1）发送Client Key Exchange消息（2）发送后续改用对称算法加密通信（3）摘要信息使用对称密钥加密发送</p><ul><li>Client Key Exchange消息包括：<ul><li>客户端椭圆曲线公钥</li></ul></li></ul><p>TLS第四次握手，服务端:（1）发送改用对称算法加密通信（2）摘要信息使用对称密钥加密发送</p><p>注：</p><ol><li><p>会话密钥&#x3D;客户端随机数+服务端随机数+椭圆曲线生成的共享密钥</p></li><li><p>RSA在TLS完成四次握手后才能进行应用数据的传输；而ECDHE算法，客户端可以不等服务器最后一次TLS握手就进行加密HTTP数据传送，节省一个RTT时间。</p></li></ol>]]></content>
-      
-      
-      <categories>
-          
-          <category> 每日学习 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> LeetCode（二叉树） </tag>
-            
-            <tag> 小林coding（计算机网络） </tag>
             
         </tags>
       
