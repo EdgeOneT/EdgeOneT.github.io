@@ -4,8 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="标签: 小林coding（计算机网络）, Hexo">
-    <meta name="description" content="Hexo">
+    <meta name="keywords" content="每日学习（3）, Hexo">
+    <meta name="description" content="LeetCode16. 找树左下角的值先找出最大深度，再左边。可以先dfs，再用队列
+17. 路径总和同15一样，遍历基础上加判断条件
+小林codingHTTPS RSA握手解析RTT(往返时延)：发送端发送一个数据包到接收端，接收端返回确">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>标签: 小林coding（计算机网络） | Hexo</title>
+    <title>每日学习（3） | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -330,325 +332,522 @@
 
 </header>
 
-    <div class="bg-cover pd-header about-cover">
-    <div class="container">
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">每日学习（3）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
     <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                    subtitle
-                
-            </div>
-
-            <div class="description center-align">
-                
-                <span id="subtitle"></span>
-                <script src="/libs/typed/typed.js"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: [ 
-                            
-                                "也无风雨也无晴",
-                            
-                                "Neither wind nor rain, neither sunny nor cloudy.",
-                            
-                        ],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
-</script>
-<script>
-    
-      var bannerUrl = "/medias/featureimages/" + Math.floor(Math.random() * 24) + '.jpg';
-    
-    $('.bg-cover.about-cover').css('background-image', 'url(' + bannerUrl + ')');
-
-</script>
-
-
-    </div>
-</div>
-
-<main class="content">
-
-    
-
-<div id="tags" class="container chip-container">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
     <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fas fa-tags"></i>&nbsp;&nbsp;文章标签
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/LeetCode%EF%BC%88%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%89/">
+                                <span class="chip bg-color">LeetCode（二叉树）</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%B0%8F%E6%9E%97coding%EF%BC%88%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%89/">
+                                <span class="chip bg-color">小林coding（计算机网络）</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%AF%8F%E6%97%A5%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                每日学习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
             </div>
-            <div class="tag-chips">
+
+            <div class="post-info">
                 
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2024-11-28
+                </div>
                 
-                <a href="/tags/LeetCode%EF%BC%88%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%89/" title="LeetCode（二叉树）: 3">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="LeetCode（二叉树）" style="background-color: #F9EBEA;">LeetCode（二叉树）
-                        <span class="tag-length">3</span>
-                    </span>
-                </a>
+
                 
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2024-11-29
+                </div>
                 
-                <a href="/tags/%E5%B0%8F%E6%9E%97coding%EF%BC%88%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%89/" title="小林coding（计算机网络）: 3">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            data-tagname="小林coding（计算机网络）" style="background-color: #F5EEF8;">小林coding（计算机网络）
-                        <span class="tag-length">3</span>
-                    </span>
-                </a>
+
                 
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    670
+                </div>
                 
-                <a href="/tags/LeetCode/" title="LeetCode: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="LeetCode" style="background-color: #D5F5E3;">LeetCode
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
+
                 
+
                 
-                <a href="/tags/%E7%AE%97%E6%B3%95/" title="算法: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="算法" style="background-color: #E8F8F5;">算法
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><h4 id="16-找树左下角的值"><a href="#16-找树左下角的值" class="headerlink" title="16. 找树左下角的值"></a>16. 找树左下角的值</h4><p>先找出最大深度，再左边。可以先dfs，再用队列</p>
+<h4 id="17-路径总和"><a href="#17-路径总和" class="headerlink" title="17. 路径总和"></a>17. 路径总和</h4><p>同15一样，遍历基础上加判断条件</p>
+<h2 id="小林coding"><a href="#小林coding" class="headerlink" title="小林coding"></a>小林coding</h2><h3 id="HTTPS-RSA握手解析"><a href="#HTTPS-RSA握手解析" class="headerlink" title="HTTPS RSA握手解析"></a>HTTPS RSA握手解析</h3><p><strong>RTT</strong>(往返时延)：发送端发送一个数据包到接收端，接收端返回确认包到发送端的整个时间。</p>
+<p>整个TLS握手过程前面已经总结</p>
+<p>补充以下：</p>
+<ul>
+<li><p>四次握手，需要2个RTT时延</p>
+</li>
+<li><p>密码套件基本形式为：密钥交换算法 + 签名算法 + 对称加密算法 + 摘要算法</p>
+</li>
+<li><p>CA进行签名过程为：对持有者的公钥等信息进行打包，然后对这个包进行hash计算，得到hash值，然后用私钥对这个值进行加密。</p>
+</li>
+<li><p>第三次握手，最后客户端发送的摘要信息，使用的是会话密钥加密。目的是验证加密通信是否可用和前面整个握手信息是否有被篡改。</p>
+</li>
+<li><p>RSA不支持前向保密，私钥一旦泄密，以前的所有TLS密文都被破解。</p>
+</li>
+</ul>
+<p>前向保密：即使密钥被泄露，过去的信息也不会被解密。每次通信生成的都是临时密钥。</p>
+<h3 id="HTTPS-ECDHE-握手解析"><a href="#HTTPS-ECDHE-握手解析" class="headerlink" title="HTTPS ECDHE 握手解析"></a>HTTPS ECDHE 握手解析</h3><p>算法核心思想：离散对数</p>
+<p>ECDHE算法具有前向安全，现在被广泛使用。</p>
+<p>DH-&gt;DHE-&gt;ECDHE</p>
+<p>ECDHE算法实在DHE算法基础上使用了ECC椭圆曲线特性，用更少的计算量计算出公钥和最终的会话密钥。</p>
+<p>TLS第一次握手，客户端：（1）TLS版本号（2）支持的密码套件（3）生成的随机数</p>
+<p>TLS第二次握手，服务器:（1）确认TLS版本号（2）随机数（3）选择密码套件（4）数字证书（5）发送Server Key Exchange 消息</p>
+<ul>
+<li>Server Key Exchange 消息包括：<ul>
+<li>选好了椭圆曲线（基点G也确定）</li>
+<li>服务端椭圆曲线公钥</li>
+</ul>
+</li>
+</ul>
+<p>TLS第三次握手，客户端:（1）发送Client Key Exchange消息（2）发送后续改用对称算法加密通信（3）摘要信息使用对称密钥加密发送</p>
+<ul>
+<li>Client Key Exchange消息包括：<ul>
+<li>客户端椭圆曲线公钥</li>
+</ul>
+</li>
+</ul>
+<p>TLS第四次握手，服务端:（1）发送改用对称算法加密通信（2）摘要信息使用对称密钥加密发送</p>
+<p>注：</p>
+<ol>
+<li><p>会话密钥&#x3D;客户端随机数+服务端随机数+椭圆曲线生成的共享密钥</p>
+</li>
+<li><p>RSA在TLS完成四次握手后才能进行应用数据的传输；而ECDHE算法，客户端可以不等服务器最后一次TLS握手就进行加密HTTP数据传送，节省一个RTT时间。</p>
+</li>
+</ol>
+
                 
-                
-                <a href="/tags/Golang/" title="Golang: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="Golang" style="background-color: #FEF9E7;">Golang
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="基础知识: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="基础知识" style="background-color: #F8F9F9;">基础知识
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/" title="联邦学习: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="联邦学习" style="background-color: #82E0AA;">联邦学习
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E4%BC%9A%E8%AE%AE%E6%9C%9F%E5%88%8A/" title="会议期刊: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="会议期刊" style="background-color: #D7BDE2;">会议期刊
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" title="计算机基础: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="计算机基础" style="background-color: #A3E4D7;">计算机基础
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E8%AE%A1%E7%BD%91%E9%9D%A2%E8%AF%95%E9%A2%98/" title="计网面试题: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="计网面试题" style="background-color: #85C1E9;">计网面试题
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/golang/" title="golang: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="golang" style="background-color: #F8C471;">golang
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/gin/" title="gin: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="gin" style="background-color: #F9E79F;">gin
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/gorm/" title="gorm: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="gorm" style="background-color: #F5EEF8;">gorm
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/redis/" title="redis: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="redis" style="background-color: #82E0AA;">redis
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/mysql/" title="mysql: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="mysql" style="background-color: #F8C471;">mysql
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/go-vue/" title="go-vue: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="go-vue" style="background-color: #D5F5E3;">go-vue
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">OneBy</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://edgeonet.github.io/2024/11/28/mei-ri-xue-xi-3/">https://edgeonet.github.io/2024/11/28/mei-ri-xue-xi-3/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">OneBy</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/LeetCode%EF%BC%88%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%89/">
+                                    <span class="chip bg-color">LeetCode（二叉树）</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%B0%8F%E6%9E%97coding%EF%BC%88%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%89/">
+                                    <span class="chip bg-color">小林coding（计算机网络）</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
     
 
-    <article id="articles" class="container articles">
-        <div class="row tags-posts">
-            
-            
-            <div class="article tag-post col s12 m6 l4" data-tags="LeetCode（二叉树）, 小林coding（计算机网络）" data-aos="fade-up">
-                <div class="card">
-                    <a href="/2024/11/28/mei-ri-xue-xi-3/">
-                        <div class="card-image tag-image">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2024/11/28/mei-ri-xue-xi-2/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="每日学习（2）">
+                        
+                        <span class="card-title">每日学习（2）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
                             
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-11-28
+                        </span>
+                        <span class="publish-author">
                             
-                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="每日学习（3）">
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <span class="card-title">每日学习（3）</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-11-28
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E6%AF%8F%E6%97%A5%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                每日学习
+                            <a href="/categories/%E6%AF%8F%E6%97%A5%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    每日学习
                                 </a>
-                                
-                                
-                            </span>
-                        </div>
+                            
+                            
+                        </span>
                     </div>
                 </div>
-            </div>
-            
-            
-            <div class="article tag-post col s12 m6 l4" data-tags="LeetCode（二叉树）, 小林coding（计算机网络）, go-vue" data-aos="fade-up">
-                <div class="card">
-                    <a href="/2024/11/28/mei-ri-xue-xi-2/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="每日学习（2）">
-                            
-                            <span class="card-title">每日学习（2）</span>
-                        </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/LeetCode%EF%BC%88%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%89/">
+                        <span class="chip bg-color">LeetCode（二叉树）</span>
                     </a>
-                    <div class="card-content article-content">
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-11-28
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E6%AF%8F%E6%97%A5%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                每日学习
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
+                    
+                    <a href="/tags/%E5%B0%8F%E6%9E%97coding%EF%BC%88%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%89/">
+                        <span class="chip bg-color">小林coding（计算机网络）</span>
+                    </a>
+                    
+                    <a href="/tags/go-vue/">
+                        <span class="chip bg-color">go-vue</span>
+                    </a>
+                    
                 </div>
+                
             </div>
-            
-            
-            <div class="article tag-post col s12 m6 l4" data-tags="LeetCode（二叉树）, 小林coding（计算机网络）" data-aos="fade-up">
-                <div class="card">
-                    <a href="/2024/11/27/mei-ri-xue-xi-1/">
-                        <div class="card-image tag-image">
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/11/27/lun-wen-zhi-shi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="论文方面">
+                        
+                        <span class="card-title">论文方面</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
                             
-                            
-                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="每日学习（1）">
-                            
-                            <span class="card-title">每日学习（1）</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="publish-info">
+                        
+                    </div>
+                    <div class="publish-info">
                             <span class="publish-date">
                                 <i class="far fa-clock fa-fw icon-date"></i>2024-11-27
                             </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E6%AF%8F%E6%97%A5%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                每日学习
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%BA%E6%96%87/" class="post-category">
+                                    论文
                                 </a>
-                                
-                                
-                            </span>
-                        </div>
+                            
+                            
+                        </span>
                     </div>
                 </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+                        <span class="chip bg-color">基础知识</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">联邦学习</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BC%9A%E8%AE%AE%E6%9C%9F%E5%88%8A/">
+                        <span class="chip bg-color">会议期刊</span>
+                    </a>
+                    
+                </div>
+                
             </div>
-            
         </div>
-    </article>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
 </main>
 
 
