@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Go-Vue通用后台管理, Hexo">
-    <meta name="description" content="Go-Vue通用后台管理代码解释1. 在db.go中1.Db, err &amp;#x3D; gorm.Open(mysql.Open(url), &amp;amp;gorm.Config{}）1234Db, err = gorm.Open(mysql.O">
+    <meta name="description" content="Go-Vue通用后台管理代码解释1. 在db.go中1.Db, err &amp;#x3D; gorm.Open(mysql.Open(url), &amp;amp;gorm.Config{}）Db, err = gorm.Open(mysql.Open(">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -49,7 +49,10 @@
     
 
 
-
+	<!-- PrismJS CSS -->
+	<link rel="stylesheet" href="/libs/prism/prism.min.css">
+	<!-- PrismJS JS -->
+	<script src="/libs/prism/prism.min.js"></script>
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
 <meta name="generator" content="Hexo 7.3.0"></head>
@@ -430,15 +433,15 @@
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
-        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Go-Vue通用后台管理"><a href="#Go-Vue通用后台管理" class="headerlink" title="Go-Vue通用后台管理"></a>Go-Vue通用后台管理</h1><h2 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h2><h3 id="1-在db-go中"><a href="#1-在db-go中" class="headerlink" title="1. 在db.go中"></a>1. 在db.go中</h3><h4 id="1-Db-err-gorm-Open-mysql-Open-url-gorm-Config-）"><a href="#1-Db-err-gorm-Open-mysql-Open-url-gorm-Config-）" class="headerlink" title="1.Db, err &#x3D; gorm.Open(mysql.Open(url), &amp;gorm.Config{}）"></a>1.Db, err &#x3D; gorm.Open(mysql.Open(url), &amp;gorm.Config{}）</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Db, err = gorm.Open(mysql.Open(url), &amp;gorm.Config&#123;</span><br><span class="line">	Logger: logger.Default.LogMode(logger.Info),</span><br><span class="line">	DisableForeignKeyConstraintWhenMigrating: <span class="literal">true</span>,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+                <h1 id="Go-Vue通用后台管理"><a href="#Go-Vue通用后台管理" class="headerlink" title="Go-Vue通用后台管理"></a>Go-Vue通用后台管理</h1><h2 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h2><h3 id="1-在db-go中"><a href="#1-在db-go中" class="headerlink" title="1. 在db.go中"></a>1. 在db.go中</h3><h4 id="1-Db-err-gorm-Open-mysql-Open-url-gorm-Config-）"><a href="#1-Db-err-gorm-Open-mysql-Open-url-gorm-Config-）" class="headerlink" title="1.Db, err &#x3D; gorm.Open(mysql.Open(url), &amp;gorm.Config{}）"></a>1.Db, err &#x3D; gorm.Open(mysql.Open(url), &amp;gorm.Config{}）</h4><pre class="line-numbers language-go" data-language="go"><code class="language-go">Db<span class="token punctuation">,</span> err <span class="token operator">=</span> gorm<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span>mysql<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>gorm<span class="token punctuation">.</span>Config<span class="token punctuation">&#123;</span>
+	Logger<span class="token punctuation">:</span> logger<span class="token punctuation">.</span>Default<span class="token punctuation">.</span><span class="token function">LogMode</span><span class="token punctuation">(</span>logger<span class="token punctuation">.</span>Info<span class="token punctuation">)</span><span class="token punctuation">,</span>
+	DisableForeignKeyConstraintWhenMigrating<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h5 id="1-gorm-Open"><a href="#1-gorm-Open" class="headerlink" title="1. gorm.Open"></a>1. <strong><code>gorm.Open</code></strong></h5><ul>
 <li>GORM 是一个流行的 Golang ORM（对象关系映射）框架，用于简化数据库操作。</li>
@@ -804,9 +807,6 @@
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
