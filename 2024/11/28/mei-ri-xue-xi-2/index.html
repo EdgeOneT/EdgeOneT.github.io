@@ -432,8 +432,10 @@
             <div id="articleContent">
                 <h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><h3 id="14-二叉树的所有路径"><a href="#14-二叉树的所有路径" class="headerlink" title="14. 二叉树的所有路径"></a>14. 二叉树的所有路径</h3><p>在go语言中，append相当于新开辟地址，如果里面是b &#x3D; append(b,…)这种，在递归中会回溯，只作用在当前函数，不会影响外部函数，外部原切片地址没有增加。使用*b时就会对原切片进行改变。</p>
 <h3 id="15-左子树之和"><a href="#15-左子树之和" class="headerlink" title="15. 左子树之和"></a>15. 左子树之和</h3><p>递归遍历变式，相当于在递归遍历的基础上加上一些判断条件，这道题就是加入判断</p>
-<pre><code class="go">root.Left != nil &amp;&amp; root.Left.Left == nil &amp;&amp; root.Left.Right == nil
-</code></pre>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root.Left != <span class="literal">nil</span> &amp;&amp; root.Left.Left == <span class="literal">nil</span> &amp;&amp; root.Left.Right == <span class="literal">nil</span></span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="小林coding"><a href="#小林coding" class="headerlink" title="小林coding"></a>小林coding</h2><h3 id="HTTP-1-1如何优化"><a href="#HTTP-1-1如何优化" class="headerlink" title="HTTP&#x2F;1.1如何优化"></a>HTTP&#x2F;1.1如何优化</h3><p>三方面考虑：</p>
 <ol>
 <li>尽量避免发送HTTP请求</li>

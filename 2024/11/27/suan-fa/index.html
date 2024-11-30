@@ -436,206 +436,37 @@
 <h4 id="2-记忆化搜索（递归）"><a href="#2-记忆化搜索（递归）" class="headerlink" title="2.记忆化搜索（递归）"></a>2.记忆化搜索（递归）</h4><p>记忆化搜索 &#x3D; 暴力dfs+记录答案</p>
 <h4 id="3-迭代形式（递推dp）"><a href="#3-迭代形式（递推dp）" class="headerlink" title="3.迭代形式（递推dp）"></a>3.迭代形式（递推dp）</h4><p>递推 &#x3D; dfs向下递归的公式</p>
 <p>递推数组的初始值 &#x3D; 递归的边界</p>
-<h4 id="0-1背包"><a href="#0-1背包" class="headerlink" title="0-1背包"></a>0-1背包</h4><h5 id="1-暴力搜索"><a href="#1-暴力搜索" class="headerlink" title="1.暴力搜索"></a>1.暴力搜索</h5><pre><code class="go">/* 0-1 背包：暴力搜索 */
-func knapsackDFS(wgt, val []int, i, c int) int &#123;
-    // 若已选完所有物品或背包无剩余容量，则返回价值 0
-    if i == 0 || c == 0 &#123;
-        return 0
-    &#125;
-    // 若超过背包容量，则只能选择不放入背包
-    if wgt[i-1] &gt; c &#123;
-        return knapsackDFS(wgt, val, i-1, c)
-    &#125;
-    // 计算不放入和放入物品 i 的最大价值
-    no := knapsackDFS(wgt, val, i-1, c)
-    yes := knapsackDFS(wgt, val, i-1, c-wgt[i-1]) + val[i-1]
-    // 返回两种方案中价值更大的那一个
-    return int(math.Max(float64(no), float64(yes)))
-&#125;
-</code></pre>
-<h5 id="2-记忆化搜索"><a href="#2-记忆化搜索" class="headerlink" title="2.记忆化搜索"></a>2.记忆化搜索</h5><pre><code class="go">/* 0-1 背包：记忆化搜索 */
-func knapsackDFSMem(wgt, val []int, mem [][]int, i, c int) int &#123;
-    // 若已选完所有物品或背包无剩余容量，则返回价值 0
-    if i == 0 || c == 0 &#123;
-        return 0
-    &#125;
-    // 若已有记录，则直接返回
-    if mem[i][c] != -1 &#123;
-        return mem[i][c]
-    &#125;
-    // 若超过背包容量，则只能选择不放入背包
-    if wgt[i-1] &gt; c &#123;
-        return knapsackDFSMem(wgt, val, mem, i-1, c)
-    &#125;
-    // 计算不放入和放入物品 i 的最大价值
-    no := knapsackDFSMem(wgt, val, mem, i-1, c)
-    yes := knapsackDFSMem(wgt, val, mem, i-1, c-wgt[i-1]) + val[i-1]
-    // 返回两种方案中价值更大的那一个
-    mem[i][c] = int(math.Max(float64(no), float64(yes)))
-    return mem[i][c]
-&#125;
-</code></pre>
-<h5 id="3-动态规划"><a href="#3-动态规划" class="headerlink" title="3.动态规划"></a>3.动态规划</h5><pre><code class="go">/* 0-1 背包：动态规划 */
-func knapsackDP(wgt, val []int, cap int) int &#123;
-    n := len(wgt)
-    // 初始化 dp 表
-    dp := make([][]int, n+1)
-    for i := 0; i &lt;= n; i++ &#123;
-        dp[i] = make([]int, cap+1)
-    &#125;
-    // 状态转移
-    for i := 1; i &lt;= n; i++ &#123;
-        for c := 1; c &lt;= cap; c++ &#123;
-            if wgt[i-1] &gt; c &#123;
-                // 若超过背包容量，则不选物品 i
-                dp[i][c] = dp[i-1][c]
-            &#125; else &#123;
-                // 不选和选物品 i 这两种方案的较大值
-                dp[i][c] = int(math.Max(float64(dp[i-1][c]), float64(dp[i-1][c-wgt[i-1]]+val[i-1])))
-            &#125;
-        &#125;
-    &#125;
-    return dp[n][cap]
-&#125;
-</code></pre>
-<h5 id="4-空间优化-不熟"><a href="#4-空间优化-不熟" class="headerlink" title="4.空间优化(不熟)"></a>4.空间优化(不熟)</h5><pre><code class="go">/* 0-1 背包：空间优化后的动态规划 */
-func knapsackDPComp(wgt, val []int, cap int) int &#123;
-    n := len(wgt)
-    // 初始化 dp 表
-    dp := make([]int, cap+1)
-    // 状态转移
-    for i := 1; i &lt;= n; i++ &#123;
-        // 倒序遍历
-        for c := cap; c &gt;= 1; c-- &#123;
-            if wgt[i-1] &lt;= c &#123;
-                // 不选和选物品 i 这两种方案的较大值
-                dp[c] = int(math.Max(float64(dp[c]), float64(dp[c-wgt[i-1]]+val[i-1])))
-            &#125;
-        &#125;
-    &#125;
-    return dp[cap]
-&#125;
-</code></pre>
-<h4 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h4><h5 id="完全背包问题"><a href="#完全背包问题" class="headerlink" title="完全背包问题"></a>完全背包问题</h5><h5 id="动态规划-1"><a href="#动态规划-1" class="headerlink" title="动态规划"></a>动态规划</h5><pre><code class="go">func unboundedKnapsackDP(wgt, val []int, cap int) int &#123;
-    n := len(wgt)
-    // 初始化 dp 表
-    dp := make([][]int, n+1)
-    for i := 0; i &lt;= n; i++ &#123;
-        dp[i] = make([]int, cap+1)
-    &#125;
-    // 状态转移
-    for i := 1; i &lt;= n; i++ &#123;
-        for c := 1; c &lt;= cap; c++ &#123;
-            if wgt[i-1] &gt; c &#123;
-                // 若超过背包容量，则不选物品 i
-                dp[i][c] = dp[i-1][c]
-            &#125; else &#123;
-                // 不选和选物品 i 这两种方案的较大值
-                dp[i][c] = int(math.Max(float64(dp[i-1][c]), float64(dp[i][c-wgt[i-1]]+val[i-1])))
-            &#125;
-        &#125;
-    &#125;
-    return dp[n][cap]
-&#125;
-</code></pre>
-<h5 id="优化空间"><a href="#优化空间" class="headerlink" title="优化空间"></a>优化空间</h5><pre><code class="go">func unboundedKnapsackDPComp(wgt, val []int, cap int) int &#123;
-    n := len(wgt)
-    // 初始化 dp 表
-    dp := make([]int, cap+1)
-    // 状态转移
-    for i := 1; i &lt;= n; i++ &#123;
-        for c := 1; c &lt;= cap; c++ &#123;
-            if wgt[i-1] &gt; c &#123;
-                // 若超过背包容量，则不选物品 i
-                dp[c] = dp[c]
-            &#125; else &#123;
-                // 不选和选物品 i 这两种方案的较大值
-                dp[c] = int(math.Max(float64(dp[c]), float64(dp[c-wgt[i-1]]+val[i-1])))
-            &#125;
-        &#125;
-    &#125;
-    return dp[cap]
-&#125;
-</code></pre>
+<h4 id="0-1背包"><a href="#0-1背包" class="headerlink" title="0-1背包"></a>0-1背包</h4><h5 id="1-暴力搜索"><a href="#1-暴力搜索" class="headerlink" title="1.暴力搜索"></a>1.暴力搜索</h5><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 0-1 背包：暴力搜索 */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">knapsackDFS</span><span class="params">(wgt, val []<span class="type">int</span>, i, c <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="comment">// 若已选完所有物品或背包无剩余容量，则返回价值 0</span></span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">0</span> || c == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 若超过背包容量，则只能选择不放入背包</span></span><br><span class="line">    <span class="keyword">if</span> wgt[i<span class="number">-1</span>] &gt; c &#123;</span><br><span class="line">        <span class="keyword">return</span> knapsackDFS(wgt, val, i<span class="number">-1</span>, c)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 计算不放入和放入物品 i 的最大价值</span></span><br><span class="line">    no := knapsackDFS(wgt, val, i<span class="number">-1</span>, c)</span><br><span class="line">    yes := knapsackDFS(wgt, val, i<span class="number">-1</span>, c-wgt[i<span class="number">-1</span>]) + val[i<span class="number">-1</span>]</span><br><span class="line">    <span class="comment">// 返回两种方案中价值更大的那一个</span></span><br><span class="line">    <span class="keyword">return</span> <span class="type">int</span>(math.Max(<span class="type">float64</span>(no), <span class="type">float64</span>(yes)))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="2-记忆化搜索"><a href="#2-记忆化搜索" class="headerlink" title="2.记忆化搜索"></a>2.记忆化搜索</h5><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 0-1 背包：记忆化搜索 */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">knapsackDFSMem</span><span class="params">(wgt, val []<span class="type">int</span>, mem [][]<span class="type">int</span>, i, c <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="comment">// 若已选完所有物品或背包无剩余容量，则返回价值 0</span></span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">0</span> || c == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 若已有记录，则直接返回</span></span><br><span class="line">    <span class="keyword">if</span> mem[i][c] != <span class="number">-1</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> mem[i][c]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 若超过背包容量，则只能选择不放入背包</span></span><br><span class="line">    <span class="keyword">if</span> wgt[i<span class="number">-1</span>] &gt; c &#123;</span><br><span class="line">        <span class="keyword">return</span> knapsackDFSMem(wgt, val, mem, i<span class="number">-1</span>, c)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 计算不放入和放入物品 i 的最大价值</span></span><br><span class="line">    no := knapsackDFSMem(wgt, val, mem, i<span class="number">-1</span>, c)</span><br><span class="line">    yes := knapsackDFSMem(wgt, val, mem, i<span class="number">-1</span>, c-wgt[i<span class="number">-1</span>]) + val[i<span class="number">-1</span>]</span><br><span class="line">    <span class="comment">// 返回两种方案中价值更大的那一个</span></span><br><span class="line">    mem[i][c] = <span class="type">int</span>(math.Max(<span class="type">float64</span>(no), <span class="type">float64</span>(yes)))</span><br><span class="line">    <span class="keyword">return</span> mem[i][c]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="3-动态规划"><a href="#3-动态规划" class="headerlink" title="3.动态规划"></a>3.动态规划</h5><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 0-1 背包：动态规划 */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">knapsackDP</span><span class="params">(wgt, val []<span class="type">int</span>, <span class="built_in">cap</span> <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(wgt)</span><br><span class="line">    <span class="comment">// 初始化 dp 表</span></span><br><span class="line">    dp := <span class="built_in">make</span>([][]<span class="type">int</span>, n+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt;= n; i++ &#123;</span><br><span class="line">        dp[i] = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">cap</span>+<span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 状态转移</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt;= n; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> c := <span class="number">1</span>; c &lt;= <span class="built_in">cap</span>; c++ &#123;</span><br><span class="line">            <span class="keyword">if</span> wgt[i<span class="number">-1</span>] &gt; c &#123;</span><br><span class="line">                <span class="comment">// 若超过背包容量，则不选物品 i</span></span><br><span class="line">                dp[i][c] = dp[i<span class="number">-1</span>][c]</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 不选和选物品 i 这两种方案的较大值</span></span><br><span class="line">                dp[i][c] = <span class="type">int</span>(math.Max(<span class="type">float64</span>(dp[i<span class="number">-1</span>][c]), <span class="type">float64</span>(dp[i<span class="number">-1</span>][c-wgt[i<span class="number">-1</span>]]+val[i<span class="number">-1</span>])))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n][<span class="built_in">cap</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="4-空间优化-不熟"><a href="#4-空间优化-不熟" class="headerlink" title="4.空间优化(不熟)"></a>4.空间优化(不熟)</h5><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 0-1 背包：空间优化后的动态规划 */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">knapsackDPComp</span><span class="params">(wgt, val []<span class="type">int</span>, <span class="built_in">cap</span> <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(wgt)</span><br><span class="line">    <span class="comment">// 初始化 dp 表</span></span><br><span class="line">    dp := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">cap</span>+<span class="number">1</span>)</span><br><span class="line">    <span class="comment">// 状态转移</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt;= n; i++ &#123;</span><br><span class="line">        <span class="comment">// 倒序遍历</span></span><br><span class="line">        <span class="keyword">for</span> c := <span class="built_in">cap</span>; c &gt;= <span class="number">1</span>; c-- &#123;</span><br><span class="line">            <span class="keyword">if</span> wgt[i<span class="number">-1</span>] &lt;= c &#123;</span><br><span class="line">                <span class="comment">// 不选和选物品 i 这两种方案的较大值</span></span><br><span class="line">                dp[c] = <span class="type">int</span>(math.Max(<span class="type">float64</span>(dp[c]), <span class="type">float64</span>(dp[c-wgt[i<span class="number">-1</span>]]+val[i<span class="number">-1</span>])))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[<span class="built_in">cap</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h4><h5 id="完全背包问题"><a href="#完全背包问题" class="headerlink" title="完全背包问题"></a>完全背包问题</h5><h5 id="动态规划-1"><a href="#动态规划-1" class="headerlink" title="动态规划"></a>动态规划</h5><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">unboundedKnapsackDP</span><span class="params">(wgt, val []<span class="type">int</span>, <span class="built_in">cap</span> <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(wgt)</span><br><span class="line">    <span class="comment">// 初始化 dp 表</span></span><br><span class="line">    dp := <span class="built_in">make</span>([][]<span class="type">int</span>, n+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt;= n; i++ &#123;</span><br><span class="line">        dp[i] = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">cap</span>+<span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 状态转移</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt;= n; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> c := <span class="number">1</span>; c &lt;= <span class="built_in">cap</span>; c++ &#123;</span><br><span class="line">            <span class="keyword">if</span> wgt[i<span class="number">-1</span>] &gt; c &#123;</span><br><span class="line">                <span class="comment">// 若超过背包容量，则不选物品 i</span></span><br><span class="line">                dp[i][c] = dp[i<span class="number">-1</span>][c]</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 不选和选物品 i 这两种方案的较大值</span></span><br><span class="line">                dp[i][c] = <span class="type">int</span>(math.Max(<span class="type">float64</span>(dp[i<span class="number">-1</span>][c]), <span class="type">float64</span>(dp[i][c-wgt[i<span class="number">-1</span>]]+val[i<span class="number">-1</span>])))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n][<span class="built_in">cap</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="优化空间"><a href="#优化空间" class="headerlink" title="优化空间"></a>优化空间</h5><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">unboundedKnapsackDPComp</span><span class="params">(wgt, val []<span class="type">int</span>, <span class="built_in">cap</span> <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(wgt)</span><br><span class="line">    <span class="comment">// 初始化 dp 表</span></span><br><span class="line">    dp := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">cap</span>+<span class="number">1</span>)</span><br><span class="line">    <span class="comment">// 状态转移</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt;= n; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> c := <span class="number">1</span>; c &lt;= <span class="built_in">cap</span>; c++ &#123;</span><br><span class="line">            <span class="keyword">if</span> wgt[i<span class="number">-1</span>] &gt; c &#123;</span><br><span class="line">                <span class="comment">// 若超过背包容量，则不选物品 i</span></span><br><span class="line">                dp[c] = dp[c]</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 不选和选物品 i 这两种方案的较大值</span></span><br><span class="line">                dp[c] = <span class="type">int</span>(math.Max(<span class="type">float64</span>(dp[c]), <span class="type">float64</span>(dp[c-wgt[i<span class="number">-1</span>]]+val[i<span class="number">-1</span>])))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[<span class="built_in">cap</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><strong>多重背包</strong></p>
-<h4 id="零钱兑换问题"><a href="#零钱兑换问题" class="headerlink" title="零钱兑换问题"></a>零钱兑换问题</h4><h5 id="动态规划-2"><a href="#动态规划-2" class="headerlink" title="动态规划"></a>动态规划</h5><pre><code class="go">func coinChangeDP(coins []int, amt int) int &#123;
-    n := len(coins)
-    max := amt + 1
-    // 初始化 dp 表
-    dp := make([][]int, n+1)
-    for i := 0; i &lt;= n; i++ &#123;
-        dp[i] = make([]int, amt+1)
-    &#125;
-    // 状态转移：首行首列
-    for a := 1; a &lt;= amt; a++ &#123;
-        dp[0][a] = max
-    &#125;
-    // 状态转移：其余行和列
-    for i := 1; i &lt;= n; i++ &#123;
-        for a := 1; a &lt;= amt; a++ &#123;
-            if coins[i-1] &gt; a &#123;
-                // 若超过目标金额，则不选硬币 i
-                dp[i][a] = dp[i-1][a]
-            &#125; else &#123;
-                // 不选和选硬币 i 这两种方案的较小值
-                dp[i][a] = int(math.Min(float64(dp[i-1][a]), float64(dp[i][a-coins[i-1]]+1)))
-            &#125;
-        &#125;
-    &#125;
-    if dp[n][amt] != max &#123;
-        return dp[n][amt]
-    &#125;
-    return -1
-&#125;
-</code></pre>
-<h5 id="优化空间-1"><a href="#优化空间-1" class="headerlink" title="优化空间"></a>优化空间</h5><pre><code class="go">func coinChangeDPComp(coins []int, amt int) int &#123;
-    n := len(coins)
-    max := amt + 1
-    // 初始化 dp 表
-    dp := make([]int, amt+1)
-    for i := 1; i &lt;= amt; i++ &#123;
-        dp[i] = max
-    &#125;
-    // 状态转移
-    for i := 1; i &lt;= n; i++ &#123;
-        // 正序遍历
-        for a := 1; a &lt;= amt; a++ &#123;
-            if coins[i-1] &gt; a &#123;
-                // 若超过目标金额，则不选硬币 i
-                dp[a] = dp[a]
-            &#125; else &#123;
-                // 不选和选硬币 i 这两种方案的较小值
-                dp[a] = int(math.Min(float64(dp[a]), float64(dp[a-coins[i-1]]+1)))
-            &#125;
-        &#125;
-    &#125;
-    if dp[amt] != max &#123;
-        return dp[amt]
-    &#125;
-    return -1
-&#125;
-</code></pre>
-<h4 id="零钱兑换问题-II"><a href="#零钱兑换问题-II" class="headerlink" title="零钱兑换问题 II"></a>零钱兑换问题 II</h4><h5 id="动态规划-3"><a href="#动态规划-3" class="headerlink" title="动态规划"></a>动态规划</h5><pre><code class="go">func coinChangeIIDP(coins []int, amt int) int &#123;
-    n := len(coins)
-    dp := make([][]int , n+1)
-    for i:= 0; i &lt;= n; i++ &#123;
-        dp[i] = make([]int, amt+1)
-    &#125;
-    for i := 0; i &lt;= n; i++ &#123;
-        dp[i][0] = 1
-    &#125;
-    for i := 1; i &lt;= n; i++ &#123;
-        for a := 1; a &lt;= amt ; a++ &#123;
-            if coins[i] &gt; amt &#123;
-                dp[i][a] = dp[i-1][a]
-            &#125; else &#123;
-                dp[i][a] = dp[i-1][a] + dp[i][a-coins[i]]
-            &#125;
-        &#125;
-    &#125;
-    return dp[n][amt]
-&#125;
-</code></pre>
+<h4 id="零钱兑换问题"><a href="#零钱兑换问题" class="headerlink" title="零钱兑换问题"></a>零钱兑换问题</h4><h5 id="动态规划-2"><a href="#动态规划-2" class="headerlink" title="动态规划"></a>动态规划</h5><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">coinChangeDP</span><span class="params">(coins []<span class="type">int</span>, amt <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(coins)</span><br><span class="line">    max := amt + <span class="number">1</span></span><br><span class="line">    <span class="comment">// 初始化 dp 表</span></span><br><span class="line">    dp := <span class="built_in">make</span>([][]<span class="type">int</span>, n+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt;= n; i++ &#123;</span><br><span class="line">        dp[i] = <span class="built_in">make</span>([]<span class="type">int</span>, amt+<span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 状态转移：首行首列</span></span><br><span class="line">    <span class="keyword">for</span> a := <span class="number">1</span>; a &lt;= amt; a++ &#123;</span><br><span class="line">        dp[<span class="number">0</span>][a] = max</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 状态转移：其余行和列</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt;= n; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> a := <span class="number">1</span>; a &lt;= amt; a++ &#123;</span><br><span class="line">            <span class="keyword">if</span> coins[i<span class="number">-1</span>] &gt; a &#123;</span><br><span class="line">                <span class="comment">// 若超过目标金额，则不选硬币 i</span></span><br><span class="line">                dp[i][a] = dp[i<span class="number">-1</span>][a]</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 不选和选硬币 i 这两种方案的较小值</span></span><br><span class="line">                dp[i][a] = <span class="type">int</span>(math.Min(<span class="type">float64</span>(dp[i<span class="number">-1</span>][a]), <span class="type">float64</span>(dp[i][a-coins[i<span class="number">-1</span>]]+<span class="number">1</span>)))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> dp[n][amt] != max &#123;</span><br><span class="line">        <span class="keyword">return</span> dp[n][amt]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="优化空间-1"><a href="#优化空间-1" class="headerlink" title="优化空间"></a>优化空间</h5><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">coinChangeDPComp</span><span class="params">(coins []<span class="type">int</span>, amt <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(coins)</span><br><span class="line">    max := amt + <span class="number">1</span></span><br><span class="line">    <span class="comment">// 初始化 dp 表</span></span><br><span class="line">    dp := <span class="built_in">make</span>([]<span class="type">int</span>, amt+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt;= amt; i++ &#123;</span><br><span class="line">        dp[i] = max</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 状态转移</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt;= n; i++ &#123;</span><br><span class="line">        <span class="comment">// 正序遍历</span></span><br><span class="line">        <span class="keyword">for</span> a := <span class="number">1</span>; a &lt;= amt; a++ &#123;</span><br><span class="line">            <span class="keyword">if</span> coins[i<span class="number">-1</span>] &gt; a &#123;</span><br><span class="line">                <span class="comment">// 若超过目标金额，则不选硬币 i</span></span><br><span class="line">                dp[a] = dp[a]</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 不选和选硬币 i 这两种方案的较小值</span></span><br><span class="line">                dp[a] = <span class="type">int</span>(math.Min(<span class="type">float64</span>(dp[a]), <span class="type">float64</span>(dp[a-coins[i<span class="number">-1</span>]]+<span class="number">1</span>)))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> dp[amt] != max &#123;</span><br><span class="line">        <span class="keyword">return</span> dp[amt]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="零钱兑换问题-II"><a href="#零钱兑换问题-II" class="headerlink" title="零钱兑换问题 II"></a>零钱兑换问题 II</h4><h5 id="动态规划-3"><a href="#动态规划-3" class="headerlink" title="动态规划"></a>动态规划</h5><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">coinChangeIIDP</span><span class="params">(coins []<span class="type">int</span>, amt <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(coins)</span><br><span class="line">    dp := <span class="built_in">make</span>([][]<span class="type">int</span> , n+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i:= <span class="number">0</span>; i &lt;= n; i++ &#123;</span><br><span class="line">        dp[i] = <span class="built_in">make</span>([]<span class="type">int</span>, amt+<span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt;= n; i++ &#123;</span><br><span class="line">        dp[i][<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt;= n; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> a := <span class="number">1</span>; a &lt;= amt ; a++ &#123;</span><br><span class="line">            <span class="keyword">if</span> coins[i] &gt; amt &#123;</span><br><span class="line">                dp[i][a] = dp[i<span class="number">-1</span>][a]</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                dp[i][a] = dp[i<span class="number">-1</span>][a] + dp[i][a-coins[i]]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n][amt]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 <h5 id="优化空间-2"><a href="#优化空间-2" class="headerlink" title="优化空间"></a>优化空间</h5><h5 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h5><p><strong>leetcode：</strong></p>
 <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-palindromic-substring/">5. 最长回文子串</a></p>
 <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/climbing-stairs/">70. 爬楼梯</a></p>
@@ -644,49 +475,24 @@ func knapsackDPComp(wgt, val []int, cap int) int &#123;
 <p>首先对数组进行排序，方便后续指针操作 </p>
 <p>a + b + c &#x3D; 0 （大小顺序从左向右依次增大）</p>
 <p>i指向a，l指向b，r指向c</p>
-<pre><code class="go">如果一开始 a &gt; 0，则可以退出了
-i去重：判断nums[i] == nums[i-1]
-if a + b + c &gt; 0，r--
-else if a + b + c &lt; 0, l++
-else a + b + c == 0 时，
-    先收集数组,然后对bc进行去重
-    for r &gt; l &amp;&amp; nums[l] == nums[l+1] l++
-    for r &gt; l &amp;&amp; nums[r] == nums[r-1] r--
-    
-</code></pre>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">如果一开始 a &gt; <span class="number">0</span>，则可以退出了</span><br><span class="line">i去重：判断nums[i] == nums[i<span class="number">-1</span>]</span><br><span class="line"><span class="keyword">if</span> a + b + c &gt; <span class="number">0</span>，r--</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> a + b + c &lt; <span class="number">0</span>, l++</span><br><span class="line"><span class="keyword">else</span> a + b + c == <span class="number">0</span> 时，</span><br><span class="line">	先收集数组,然后对bc进行去重</span><br><span class="line">	<span class="keyword">for</span> r &gt; l &amp;&amp; nums[l] == nums[l+<span class="number">1</span>] l++</span><br><span class="line">	<span class="keyword">for</span> r &gt; l &amp;&amp; nums[r] == nums[r<span class="number">-1</span>] r--</span><br><span class="line">	</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <h4 id="四数之和"><a href="#四数之和" class="headerlink" title="四数之和"></a>四数之和</h4><p>同上</p>
-<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><h4 id="反转字符串里的单词"><a href="#反转字符串里的单词" class="headerlink" title="反转字符串里的单词"></a>反转字符串里的单词</h4><pre><code class="go">例如：	  输入：s = &quot;the sky is blue&quot;
-        输出：&quot;blue is sky the&quot;
-</code></pre>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><h4 id="反转字符串里的单词"><a href="#反转字符串里的单词" class="headerlink" title="反转字符串里的单词"></a>反转字符串里的单词</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">例如：	  输入：s = <span class="string">&quot;the sky is blue&quot;</span></span><br><span class="line">		输出：<span class="string">&quot;blue is sky the&quot;</span></span><br></pre></td></tr></table></figure>
+
 <ol>
 <li>运用两次反转：第一次整体反转，第二次对每个单词进行反转。</li>
 <li>删除多余空格，每个单词之间只保留一个，用双指针法（快慢指针进行处理 既：覆盖）</li>
 </ol>
 <h4 id="实现strStr"><a href="#实现strStr" class="headerlink" title="实现strStr()"></a>实现strStr()</h4><h5 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h5><p>前缀：不包含尾字母的字串</p>
-<pre><code class="go">aabaaf的前缀:
-a
-aa
-aab
-aaba
-aabaa
-</code></pre>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">aabaaf的前缀:</span><br><span class="line">a</span><br><span class="line">aa</span><br><span class="line">aab</span><br><span class="line">aaba</span><br><span class="line">aabaa</span><br></pre></td></tr></table></figure>
+
 <p>后缀：不包含首字母的字串</p>
-<pre><code class="go">aabaaf的后缀:
-f
-af
-aaf
-baaf
-abaaf
-</code></pre>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">aabaaf的后缀:</span><br><span class="line">f</span><br><span class="line">af</span><br><span class="line">aaf</span><br><span class="line">baaf</span><br><span class="line">abaaf</span><br></pre></td></tr></table></figure>
+
 <p>最长相等前后缀长度（即模式串的前缀表）</p>
-<pre><code class="go">a 		0
-aa		1
-aab		0
-aaba	1
-aabaa	2
-aabaaf	0
-前缀表为：010120
-</code></pre>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a 		<span class="number">0</span></span><br><span class="line">aa		<span class="number">1</span></span><br><span class="line">aab		<span class="number">0</span></span><br><span class="line">aaba	<span class="number">1</span></span><br><span class="line">aabaa	<span class="number">2</span></span><br><span class="line">aabaaf	<span class="number">0</span></span><br><span class="line">前缀表为：<span class="number">010120</span></span><br></pre></td></tr></table></figure>
+
 <p>一般用next数组存前缀表</p>
 <p>注： 代码待定</p>
 <h4 id="重复字串"><a href="#重复字串" class="headerlink" title="重复字串"></a>重复字串</h4><p>注：需要学习KMP算法</p>
@@ -719,8 +525,10 @@ aabaaf	0
 <p>3.左子树高度，右子树高度，相差是否&lt;&#x3D;1</p>
 <h4 id="14-二叉树的所有路径"><a href="#14-二叉树的所有路径" class="headerlink" title="14. 二叉树的所有路径"></a>14. 二叉树的所有路径</h4><p>在go语言中，append相当于新开辟地址，如果里面是b &#x3D; append(b,…)这种，在递归中会回溯，只作用在当前函数，不会影响外部函数，外部原切片地址没有增加。使用*b时就会对原切片进行改变。</p>
 <h4 id="15-左子树之和"><a href="#15-左子树之和" class="headerlink" title="15. 左子树之和"></a>15. 左子树之和</h4><p>递归遍历变式，相当于在递归遍历的基础上加上一些判断条件，这道题就是加入判断</p>
-<pre><code class="go">root.Left != nil &amp;&amp; root.Left.Left == nil &amp;&amp; root.Left.Right == nil
-</code></pre>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root.Left != <span class="literal">nil</span> &amp;&amp; root.Left.Left == <span class="literal">nil</span> &amp;&amp; root.Left.Right == <span class="literal">nil</span></span><br></pre></td></tr></table></figure>
+
+
+
 <h4 id="16-找树左下角的值"><a href="#16-找树左下角的值" class="headerlink" title="16. 找树左下角的值"></a>16. 找树左下角的值</h4><p>先找出最大深度，再左边。可以先dfs，再用队列</p>
 <h4 id="17-路径总和"><a href="#17-路径总和" class="headerlink" title="17. 路径总和"></a>17. 路径总和</h4><p>同15一样，遍历基础上加判断条件</p>
 

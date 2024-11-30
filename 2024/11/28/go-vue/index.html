@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Go-Vue通用后台管理, Hexo">
-    <meta name="description" content="Go-Vue通用后台管理代码解释1. 在db.go中1.Db, err &amp;#x3D; gorm.Open(mysql.Open(url), &amp;amp;gorm.Config{}）    Db, err = gorm.Open(mysql.O">
+    <meta name="description" content="Go-Vue通用后台管理代码解释1. 在db.go中1.Db, err &amp;#x3D; gorm.Open(mysql.Open(url), &amp;amp;gorm.Config{}）1234Db, err = gorm.Open(mysql.O">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -438,11 +438,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Go-Vue通用后台管理"><a href="#Go-Vue通用后台管理" class="headerlink" title="Go-Vue通用后台管理"></a>Go-Vue通用后台管理</h1><h2 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h2><h3 id="1-在db-go中"><a href="#1-在db-go中" class="headerlink" title="1. 在db.go中"></a>1. 在db.go中</h3><h4 id="1-Db-err-gorm-Open-mysql-Open-url-gorm-Config-）"><a href="#1-Db-err-gorm-Open-mysql-Open-url-gorm-Config-）" class="headerlink" title="1.Db, err &#x3D; gorm.Open(mysql.Open(url), &amp;gorm.Config{}）"></a>1.Db, err &#x3D; gorm.Open(mysql.Open(url), &amp;gorm.Config{}）</h4><pre><code class="go">    Db, err = gorm.Open(mysql.Open(url), &amp;gorm.Config&#123;
-        Logger: logger.Default.LogMode(logger.Info),
-        DisableForeignKeyConstraintWhenMigrating: true,
-    &#125;)
-</code></pre>
+                <h1 id="Go-Vue通用后台管理"><a href="#Go-Vue通用后台管理" class="headerlink" title="Go-Vue通用后台管理"></a>Go-Vue通用后台管理</h1><h2 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h2><h3 id="1-在db-go中"><a href="#1-在db-go中" class="headerlink" title="1. 在db.go中"></a>1. 在db.go中</h3><h4 id="1-Db-err-gorm-Open-mysql-Open-url-gorm-Config-）"><a href="#1-Db-err-gorm-Open-mysql-Open-url-gorm-Config-）" class="headerlink" title="1.Db, err &#x3D; gorm.Open(mysql.Open(url), &amp;gorm.Config{}）"></a>1.Db, err &#x3D; gorm.Open(mysql.Open(url), &amp;gorm.Config{}）</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Db, err = gorm.Open(mysql.Open(url), &amp;gorm.Config&#123;</span><br><span class="line">	Logger: logger.Default.LogMode(logger.Info),</span><br><span class="line">	DisableForeignKeyConstraintWhenMigrating: <span class="literal">true</span>,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <h5 id="1-gorm-Open"><a href="#1-gorm-Open" class="headerlink" title="1. gorm.Open"></a>1. <strong><code>gorm.Open</code></strong></h5><ul>
 <li>GORM 是一个流行的 Golang ORM（对象关系映射）框架，用于简化数据库操作。</li>
 <li><code>gorm.Open</code> 用于初始化数据库连接。</li>
