@@ -407,14 +407,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-11-29
+                    2024-12-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    2.6k
                 </div>
                 
 
@@ -738,6 +738,8 @@ aabaaf	<span class="token number">0</span>
 
 <h4 id="16-找树左下角的值"><a href="#16-找树左下角的值" class="headerlink" title="16. 找树左下角的值"></a>16. 找树左下角的值</h4><p>先找出最大深度，再左边。可以先dfs，再用队列</p>
 <h4 id="17-路径总和"><a href="#17-路径总和" class="headerlink" title="17. 路径总和"></a>17. 路径总和</h4><p>同15一样，遍历基础上加判断条件</p>
+<h4 id="18-从中序和后序遍历序列构造二叉树"><a href="#18-从中序和后序遍历序列构造二叉树" class="headerlink" title="18. 从中序和后序遍历序列构造二叉树"></a>18. 从中序和后序遍历序列构造二叉树</h4><p>主要是用到后序遍历的那个数组，用来找到根节点。然后通过中序遍历的那个数组找到根节点位置与左右子树他们的范围长度。并且用<code>map</code>存中序数组的位置，供每次遍历的时候找到根节点和左右子树。重点其实就是划分子树长度、应该怎么取端点位置。然后就按照基础的遍历顺序来遍历</p>
+<h4 id="19-最大二叉树"><a href="#19-最大二叉树" class="headerlink" title="19. 最大二叉树"></a>19. 最大二叉树</h4><p>18题会了，19题就会。19比18简单，因为更好划分。</p>
 
                 
             </div>
