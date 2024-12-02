@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>每日学习（5）</title>
+      <link href="/2024/12/02/mei-ri-xue-xi-5/"/>
+      <url>/2024/12/02/mei-ri-xue-xi-5/</url>
+      
+        <content type="html"><![CDATA[<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><h4 id="21-合并二叉树"><a href="#21-合并二叉树" class="headerlink" title="21. 合并二叉树"></a>21. 合并二叉树</h4><p>两棵树跟着一起遍历，左对左，右对右。依旧是递归遍历为基础，加上变式。</p><h4 id="22-二叉搜索树的搜索"><a href="#22-二叉搜索树的搜索" class="headerlink" title="22. 二叉搜索树的搜索"></a>22. 二叉搜索树的搜索</h4><p>根据值的大小来选择往左还是往右遍历</p><h4 id="23-验证二叉搜索树"><a href="#23-验证二叉搜索树" class="headerlink" title="23. 验证二叉搜索树"></a>23. 验证二叉搜索树</h4><p>先用中序递归遍历收集值，再判断是否为二叉搜索树（单调递增就是）</p><h4 id="24-二叉搜索树的最小绝对差"><a href="#24-二叉搜索树的最小绝对差" class="headerlink" title="24. 二叉搜索树的最小绝对差"></a>24. 二叉搜索树的最小绝对差</h4><p>一样中序递归收集值，再左右相减比较最小的差值就行</p><h4 id="25-二叉搜索树中的众数"><a href="#25-二叉搜索树中的众数" class="headerlink" title="25. 二叉搜索树中的众数"></a>25. 二叉搜索树中的众数</h4><p>中序递归收集值，再用map存，再选出最多的append到res里面 </p><h2 id="小林coding"><a href="#小林coding" class="headerlink" title="小林coding"></a>小林coding</h2><h3 id="HTTP-2牛逼在哪"><a href="#HTTP-2牛逼在哪" class="headerlink" title="HTTP&#x2F;2牛逼在哪"></a>HTTP&#x2F;2牛逼在哪</h3><ul><li><p>兼容HTTP&#x2F;1.1</p></li><li><p>头部压缩：使用HPACK算法：（1）静态字典（2）动态字典（3）Huffman编码（压缩算法）</p><ul><li>静态字典：k-v</li></ul></li><li><p>二进制帧：将一条 HTTP 响应，划分成了两类帧来传输，并且采用二进制来编码（head+data）</p></li><li><p>并发传输：stream流（一条TCP连接传输多个stream，一个stream可以包含多个message（里面是请求或响应），message包含一个或多个Frame（存放的是压缩的头和body）</p></li><li><p>服务器主动推送资源：请求一个html，服务器可以主动发送css等。</p></li></ul><p>注：项目有点学不来</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 每日学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LeetCode（二叉树） </tag>
+            
+            <tag> 小林coding（计算机网络） </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>每日学习（4）</title>
       <link href="/2024/12/01/mei-ri-xue-xi-4/"/>
       <url>/2024/12/01/mei-ri-xue-xi-4/</url>
@@ -25,33 +52,6 @@
             <tag> 小林coding（计算机网络） </tag>
             
             <tag> 课程作业 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>每日学习（5）</title>
-      <link href="/2024/12/01/mei-ri-xue-xi-5/"/>
-      <url>/2024/12/01/mei-ri-xue-xi-5/</url>
-      
-        <content type="html"><![CDATA[<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><h4 id="21-合并二叉树"><a href="#21-合并二叉树" class="headerlink" title="21. 合并二叉树"></a>21. 合并二叉树</h4><p>两棵树跟着一起遍历，左对左，右对右。依旧是递归遍历为基础，加上变式。</p><h4 id="22-二叉搜索树的搜索"><a href="#22-二叉搜索树的搜索" class="headerlink" title="22. 二叉搜索树的搜索"></a>22. 二叉搜索树的搜索</h4><p>根据值的大小来选择往左还是往右遍历</p><h4 id="23-验证二叉搜索树"><a href="#23-验证二叉搜索树" class="headerlink" title="23. 验证二叉搜索树"></a>23. 验证二叉搜索树</h4><p>先用中序递归遍历收集值，再判断是否为二叉搜索树（单调递增就是）</p><h4 id="24-二叉搜索树的最小绝对差"><a href="#24-二叉搜索树的最小绝对差" class="headerlink" title="24. 二叉搜索树的最小绝对差"></a>24. 二叉搜索树的最小绝对差</h4><p>一样中序递归收集值，再左右相减比较最小的差值就行</p><h4 id="25-二叉搜索树中的众数"><a href="#25-二叉搜索树中的众数" class="headerlink" title="25. 二叉搜索树中的众数"></a>25. 二叉搜索树中的众数</h4><p>中序递归收集值，再用map存，再选出最多的append到res里面 </p><h2 id="小林coding"><a href="#小林coding" class="headerlink" title="小林coding"></a>小林coding</h2><h3 id="HTTP-2牛逼在哪"><a href="#HTTP-2牛逼在哪" class="headerlink" title="HTTP&#x2F;2牛逼在哪"></a>HTTP&#x2F;2牛逼在哪</h3><ul><li><p>兼容HTTP&#x2F;1.1</p></li><li><p>头部压缩：使用HPACK算法：（1）静态字典（2）动态字典（3）Huffman编码（压缩算法）</p><ul><li>静态字典：k-v</li></ul></li><li><p>二进制帧：将一条 HTTP 响应，划分成了两类帧来传输，并且采用二进制来编码（head+data）</p></li><li><p>并发传输：stream流（一条TCP连接传输多个stream，一个stream可以包含多个message（里面是请求或响应），message包含一个或多个Frame（存放的是压缩的头和body）</p></li><li><p>服务器主动推送资源：请求一个html，服务器可以主动发送css等。</p></li></ul><p>注：项目有点学不来</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 每日学习 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> LeetCode（二叉树） </tag>
-            
-            <tag> 小林coding（计算机网络） </tag>
             
         </tags>
       
