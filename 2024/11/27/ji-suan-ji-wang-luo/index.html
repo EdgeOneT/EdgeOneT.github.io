@@ -405,14 +405,14 @@ TLS四次通信
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-12-01
+                    2024-12-02
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    2.6k
                 </div>
                 
 
@@ -571,6 +571,21 @@ TLS四次通信
 <li>上述两种都需要1RTT才可以建立， TLS1.3重连只需要0RTT，使用<strong>Pre-shared Key</strong>方法。客户端会把 Ticket 和 HTTP 请求一同发送给服务端。</li>
 <li>注：会话复用不支持前向安全，且用重放攻击危险</li>
 </ul>
+</li>
+</ul>
+<h2 id="HTTP-2牛逼在哪"><a href="#HTTP-2牛逼在哪" class="headerlink" title="HTTP&#x2F;2牛逼在哪"></a>HTTP&#x2F;2牛逼在哪</h2><ul>
+<li><p>兼容HTTP&#x2F;1.1</p>
+</li>
+<li><p>头部压缩：使用HPACK算法：（1）静态字典（2）动态字典（3）Huffman编码（压缩算法）</p>
+<ul>
+<li>静态字典：k-v</li>
+</ul>
+</li>
+<li><p>二进制帧：将一条 HTTP 响应，划分成了两类帧来传输，并且采用二进制来编码（head+data）</p>
+</li>
+<li><p>并发传输：stream流（一条TCP连接传输多个stream，一个stream可以包含多个message（里面是请求或响应），message包含一个或多个Frame（存放的是压缩的头和body）</p>
+</li>
+<li><p>服务器主动推送资源：请求一个html，服务器可以主动发送css等。</p>
 </li>
 </ul>
 
