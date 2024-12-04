@@ -407,14 +407,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-12-02
+                    2024-12-04
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.8k
+                    3k
                 </div>
                 
 
@@ -745,6 +745,9 @@ aabaaf	<span class="token number">0</span>
 <h4 id="23-验证二叉搜索树"><a href="#23-验证二叉搜索树" class="headerlink" title="23. 验证二叉搜索树"></a>23. 验证二叉搜索树</h4><p>先用中序递归遍历收集值，再判断是否为二叉搜索树（单调递增就是）</p>
 <h4 id="24-二叉搜索树的最小绝对差"><a href="#24-二叉搜索树的最小绝对差" class="headerlink" title="24. 二叉搜索树的最小绝对差"></a>24. 二叉搜索树的最小绝对差</h4><p>一样中序递归收集值，再左右相减比较最小的差值就行</p>
 <h4 id="25-二叉搜索树中的众数"><a href="#25-二叉搜索树中的众数" class="headerlink" title="25. 二叉搜索树中的众数"></a>25. 二叉搜索树中的众数</h4><p>中序递归收集值，再用map存，再选出最多的append到res里面 </p>
+<h4 id="26-二叉树就的最近公共祖先"><a href="#26-二叉树就的最近公共祖先" class="headerlink" title="26. 二叉树就的最近公共祖先"></a>26. 二叉树就的最近公共祖先</h4><p>只要找到有p、q就往上返回，相当于回溯（从下往上回），然后判断左右子树是不是不为空，不为空就是最近公共祖先。这个过程包括了p或q本身为公共祖先，因为最终返回的结果只有一个。</p>
+<h4 id="27-二叉搜索树的最近公共祖先"><a href="#27-二叉搜索树的最近公共祖先" class="headerlink" title="27. 二叉搜索树的最近公共祖先"></a>27. 二叉搜索树的最近公共祖先</h4><p>找到第一个在p、q集合里面的就行（包括两端点）</p>
+<h4 id="28-二叉搜索树的插入操作"><a href="#28-二叉搜索树的插入操作" class="headerlink" title="28. 二叉搜索树的插入操作"></a>28. 二叉搜索树的插入操作</h4><p>记住递归三部曲，然后往里面套。一直往下走，直到为空，就可以将节点插入。</p>
 
                 
             </div>
