@@ -437,14 +437,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-12-04
+                    2024-12-07
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    128
+                    548
                 </div>
                 
 
@@ -477,6 +477,58 @@
 </li>
 <li>尝试实现一个 POST 接口：<ul>
 <li>接收 JSON 数据，返回原数据。</li>
+</ul>
+</li>
+</ol>
+<h2 id="day2"><a href="#day2" class="headerlink" title="day2"></a>day2</h2><h3 id="gorm操作"><a href="#gorm操作" class="headerlink" title="gorm操作"></a>gorm操作</h3><ul>
+<li><p>增</p>
+</li>
+<li><p>删</p>
+</li>
+<li><p>改</p>
+</li>
+<li><p>查</p>
+</li>
+<li><p>事务处理</p>
+</li>
+</ul>
+<h3 id="练习任务"><a href="#练习任务" class="headerlink" title="练习任务"></a><strong>练习任务</strong></h3><ol>
+<li><strong>创建一个用户模型</strong>，并进行基本的 CRUD 操作。</li>
+<li><strong>为订单表设计一个与用户的一对多关系</strong>，完成用户与订单的相关操作。</li>
+<li><strong>实现数据的事务处理</strong>，模拟一个修改用户与订单的操作，如果失败则回滚。</li>
+</ol>
+<h2 id="day3"><a href="#day3" class="headerlink" title="day3"></a>day3</h2><h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><p>redis主要是进行短期存储，虽然提供了持久化选项（如 RDB 快照和 AOF 日志），但其主要设计目标是高性能的内存操作。常用于缓存、消息队列、会话管理等场景。</p>
+<p><strong>context</strong></p>
+<ul>
+<li><p><code>context</code> 是管理操作生命周期的核心工具。</p>
+</li>
+<li><p>四种 context 创建方式满足不同需求（根、取消、超时、存储值）。</p>
+</li>
+<li><p>常用于控制 goroutine、网络请求、数据库操作的生命周期。</p>
+</li>
+</ul>
+<h3 id="JWT（JSON-Web-Token）"><a href="#JWT（JSON-Web-Token）" class="headerlink" title="JWT（JSON Web Token）"></a>JWT（JSON Web Token）</h3><p><strong>JWT 介绍</strong><br>JWT 是一种用于安全地传输信息的令牌，由三部分组成：</p>
+<ul>
+<li><strong>Header</strong>：声明令牌类型和加密算法。</li>
+<li><strong>Payload</strong>：包含声明（例如用户信息）。</li>
+<li><strong>Signature</strong>：用密钥签名确保数据的完整性。</li>
+</ul>
+<p><strong>JWT 的工作原理</strong>：</p>
+<ul>
+<li>用户登录后，服务器验证身份并生成 JWT Token。</li>
+<li>客户端在后续请求中携带 Token，服务器验证 Token 以确认用户身份。</li>
+</ul>
+<h3 id="练习任务-1"><a href="#练习任务-1" class="headerlink" title="练习任务"></a><strong>练习任务</strong></h3><ol>
+<li><strong>Redis 缓存练习</strong><ul>
+<li>将用户信息存储到 Redis 中，并模拟缓存失效后从数据库重新获取数据。</li>
+</ul>
+</li>
+<li><strong>JWT 登录功能</strong><ul>
+<li>编写一个模拟登录接口，通过用户名生成 JWT Token，并验证 Token 的有效性。</li>
+</ul>
+</li>
+<li><strong>Redis 与 JWT 结合</strong><ul>
+<li>使用 Redis 存储已登录用户的 Token，模拟 Token 的过期或强制下线。</li>
 </ul>
 </li>
 </ol>

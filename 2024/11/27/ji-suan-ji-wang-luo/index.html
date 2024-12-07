@@ -5,10 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="计算机网络, Hexo">
-    <meta name="description" content="计算机网络HTTP常见面试题HTTPS 是如何建立连接的？其间交互了什么？通过SSL&amp;#x2F;TLS协议建立，也就是TLS握手阶段
+    <meta name="description" content="计算机网络HTTP篇HTTP常见面试题HTTPS 是如何建立连接的？其间交互了什么？通过SSL&amp;#x2F;TLS协议建立，也就是TLS握手阶段
 TLS四次通信
-第一次：客户端发送:（1）支持的TLS版本（2）生成的随机数（3）支持的加密算法。
-第二次">
+第一次：客户端发送:（1）支持的TLS版本（2）生成的随机数（3）支持的加密算法">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -405,14 +404,14 @@ TLS四次通信
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-12-02
+                    2024-12-07
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.6k
+                    2.7k
                 </div>
                 
 
@@ -429,7 +428,7 @@ TLS四次通信
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="HTTP常见面试题"><a href="#HTTP常见面试题" class="headerlink" title="HTTP常见面试题"></a>HTTP常见面试题</h2><h3 id="HTTPS-是如何建立连接的？其间交互了什么？"><a href="#HTTPS-是如何建立连接的？其间交互了什么？" class="headerlink" title="HTTPS 是如何建立连接的？其间交互了什么？"></a>HTTPS 是如何建立连接的？其间交互了什么？</h3><p>通过SSL&#x2F;TLS协议建立，也就是TLS握手阶段</p>
+                <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="HTTP篇"><a href="#HTTP篇" class="headerlink" title="HTTP篇"></a>HTTP篇</h2><h3 id="HTTP常见面试题"><a href="#HTTP常见面试题" class="headerlink" title="HTTP常见面试题"></a>HTTP常见面试题</h3><h4 id="HTTPS-是如何建立连接的？其间交互了什么？"><a href="#HTTPS-是如何建立连接的？其间交互了什么？" class="headerlink" title="HTTPS 是如何建立连接的？其间交互了什么？"></a>HTTPS 是如何建立连接的？其间交互了什么？</h4><p>通过SSL&#x2F;TLS协议建立，也就是TLS握手阶段</p>
 <p><strong>TLS四次通信</strong></p>
 <p>第一次：客户端发送:（1）支持的TLS版本（2）生成的随机数（3）支持的加密算法。</p>
 <p>第二次：服务端发送:（1）确认TLS版本（不持支关闭加密通信）（2）生成的随机数（3）确认支持的加密算法（4）数字证书</p>
@@ -441,21 +440,21 @@ TLS四次通信
 <p>证书验证过程通常存在<strong>证书信任链问题</strong>：</p>
 <p>如根证书-&gt;中间证书-&gt;百度证书三级</p>
 <p>一般用根证书的公钥去验证中间证书是否可信，再通过中间证书的公钥验证百度证书是否可信。</p>
-<h3 id="HTTPS-的应用数据是如何保证完整性的？"><a href="#HTTPS-的应用数据是如何保证完整性的？" class="headerlink" title="HTTPS 的应用数据是如何保证完整性的？"></a>HTTPS 的应用数据是如何保证完整性的？</h3><p>TLS实现包括<strong>握手协议</strong>和<strong>记录协议</strong>两个两层</p>
+<h4 id="HTTPS-的应用数据是如何保证完整性的？"><a href="#HTTPS-的应用数据是如何保证完整性的？" class="headerlink" title="HTTPS 的应用数据是如何保证完整性的？"></a>HTTPS 的应用数据是如何保证完整性的？</h4><p>TLS实现包括<strong>握手协议</strong>和<strong>记录协议</strong>两个两层</p>
 <p>握手就是四次通信过程，记录协议就是保护数据并对完整性和来源进行验证（加密就在这里实现）</p>
 <p>记录协议过程：</p>
 <p>（1）消息切片、压缩</p>
 <p>（2）每个片段加上消息认证码（MAC值，hash算法生成）保证完整性和可靠性。</p>
 <p>（3）加密每一个片段</p>
 <p>（4）加密数据加上数据类型、版本号、压缩后的长度作为报头形成报文</p>
-<h3 id="HTTP-1-1、HTTP-2、HTTP-3-演变"><a href="#HTTP-1-1、HTTP-2、HTTP-3-演变" class="headerlink" title="HTTP&#x2F;1.1、HTTP&#x2F;2、HTTP&#x2F;3 演变"></a>HTTP&#x2F;1.1、HTTP&#x2F;2、HTTP&#x2F;3 演变</h3><h4 id="HTTP-1-1-相比-HTTP-1-0-提高了什么性能"><a href="#HTTP-1-1-相比-HTTP-1-0-提高了什么性能" class="headerlink" title="HTTP&#x2F;1.1 相比 HTTP&#x2F;1.0 提高了什么性能"></a>HTTP&#x2F;1.1 相比 HTTP&#x2F;1.0 提高了什么性能</h4><p>（1）使用长连接</p>
+<h4 id="HTTP-1-1、HTTP-2、HTTP-3-演变"><a href="#HTTP-1-1、HTTP-2、HTTP-3-演变" class="headerlink" title="HTTP&#x2F;1.1、HTTP&#x2F;2、HTTP&#x2F;3 演变"></a>HTTP&#x2F;1.1、HTTP&#x2F;2、HTTP&#x2F;3 演变</h4><h5 id="HTTP-1-1-相比-HTTP-1-0-提高了什么性能"><a href="#HTTP-1-1-相比-HTTP-1-0-提高了什么性能" class="headerlink" title="HTTP&#x2F;1.1 相比 HTTP&#x2F;1.0 提高了什么性能"></a>HTTP&#x2F;1.1 相比 HTTP&#x2F;1.0 提高了什么性能</h5><p>（1）使用长连接</p>
 <p>（2）支持管道网络传输（请求发出去不必等返回就可再发送请求）</p>
-<h4 id="HTTP-2-做了什么优化？"><a href="#HTTP-2-做了什么优化？" class="headerlink" title="HTTP&#x2F;2 做了什么优化？"></a>HTTP&#x2F;2 做了什么优化？</h4><p>HTTP&#x2F;2是基于https</p>
+<h5 id="HTTP-2-做了什么优化？"><a href="#HTTP-2-做了什么优化？" class="headerlink" title="HTTP&#x2F;2 做了什么优化？"></a>HTTP&#x2F;2 做了什么优化？</h5><p>HTTP&#x2F;2是基于https</p>
 <p>（1）压缩头部：用索引号代替重复字段</p>
 <p>（2）二进制格式：head和body都变成二进制（帧）</p>
 <p>（3）并发传输：同一个tcp连接传多个stream（多个头＋体），即并行交错进行请求和响应，避免响应的队头阻塞</p>
 <p>（4）服务器推送：服务器主动发送信息给客户端</p>
-<h4 id="HTTP-3-做了哪些优化？"><a href="#HTTP-3-做了哪些优化？" class="headerlink" title="HTTP&#x2F;3 做了哪些优化？"></a>HTTP&#x2F;3 做了哪些优化？</h4><p>将TCP协议变成UDP协议，并且使用基于UDP的QUIC协议</p>
+<h5 id="HTTP-3-做了哪些优化？"><a href="#HTTP-3-做了哪些优化？" class="headerlink" title="HTTP&#x2F;3 做了哪些优化？"></a>HTTP&#x2F;3 做了哪些优化？</h5><p>将TCP协议变成UDP协议，并且使用基于UDP的QUIC协议</p>
 <p>QUIC特点</p>
 <ul>
 <li>无队头堵塞（stream丢包，只堵塞这个流，不像HTTP&#x2F;2堵塞TCP整个队头）</li>
@@ -464,34 +463,34 @@ TLS四次通信
 </ul>
 <p>QUIC是UDP上：伪TCP+TLS+HTTP&#x2F;2的多路复用协议</p>
 <p>注：<strong>SSL&#x2F;TLS1.2</strong>需要4次握手，<strong>SSL&#x2F;TLS1.3</strong>只需要3次握手</p>
-<h2 id="HTTP-1-1如何优化"><a href="#HTTP-1-1如何优化" class="headerlink" title="HTTP&#x2F;1.1如何优化"></a>HTTP&#x2F;1.1如何优化</h2><p>三方面考虑：</p>
+<h3 id="HTTP-1-1如何优化"><a href="#HTTP-1-1如何优化" class="headerlink" title="HTTP&#x2F;1.1如何优化"></a>HTTP&#x2F;1.1如何优化</h3><p>三方面考虑：</p>
 <ol>
 <li>尽量避免发送HTTP请求</li>
 <li>需要请求时，尽量少发</li>
 <li>减少服务器HTTP响应</li>
 </ol>
-<h3 id="1-避免发送请求"><a href="#1-避免发送请求" class="headerlink" title="1. 避免发送请求"></a>1. 避免发送请求</h3><p>有一些对于请求重复数据的请求就可以存在本地的缓冲中，直接读取本地的数据就行。</p>
+<h4 id="1-避免发送请求"><a href="#1-避免发送请求" class="headerlink" title="1. 避免发送请求"></a>1. 避免发送请求</h4><p>有一些对于请求重复数据的请求就可以存在本地的缓冲中，直接读取本地的数据就行。</p>
 <p>需要<strong>缓存技术</strong>：</p>
 <p>客户端将第一次请求和响应保存在本地磁盘，请求的URL作为key，响应作为value。并且为了防止响应的数据过期，服务器会发送一个估算的过期时间，过期就重新发起请求。</p>
 <p>并且为了提高协议性能，客户端重新发起请求时在<strong>Etag</strong>头部带上第一次响应头部的摘要，让服务器对比本地资源的摘要。如果不同，返回新资源。如果相同，返回不包含体的304响应，让服务器继续使用缓存数据。</p>
-<h3 id="2-减少HTTP请求次数"><a href="#2-减少HTTP请求次数" class="headerlink" title="2. 减少HTTP请求次数"></a>2. 减少HTTP请求次数</h3><ul>
+<h4 id="2-减少HTTP请求次数"><a href="#2-减少HTTP请求次数" class="headerlink" title="2. 减少HTTP请求次数"></a>2. 减少HTTP请求次数</h4><ul>
 <li>减少重定向请求次数</li>
 <li>合并请求</li>
 <li>延迟发送请求</li>
 </ul>
-<h4 id="减少重定向请求次数"><a href="#减少重定向请求次数" class="headerlink" title="减少重定向请求次数"></a>减少重定向请求次数</h4><p>重定向：当资源迁移时，资源从url1到url2。客户端不知道情况，就需要先发送请求到url1（302响应码），再发送请求到url2。</p>
+<h5 id="减少重定向请求次数"><a href="#减少重定向请求次数" class="headerlink" title="减少重定向请求次数"></a>减少重定向请求次数</h5><p>重定向：当资源迁移时，资源从url1到url2。客户端不知道情况，就需要先发送请求到url1（302响应码），再发送请求到url2。</p>
 <p>服务端一般不只一台，源服务器上一级为代理服务器。</p>
 <p>客户端-&gt;代理服务器-&gt;原服务器</p>
 <p>将重定向的工作交给代理服务器完成，就可以减少HTTP请求次数，并且代理服务器知晓重定向规则后，可以进一步减少消息传递次数。</p>
 <p>注：可以看小林coding上面的图</p>
-<h4 id="合并请求"><a href="#合并请求" class="headerlink" title="合并请求"></a>合并请求</h4><p>将资源合并，用一个大的资源请求获取多个小资源请求。比如需要请求多个图片，可以用技术把它们合并成一个图片，只需要一个请求就行了。</p>
-<h4 id="延时发送请求"><a href="#延时发送请求" class="headerlink" title="延时发送请求"></a>延时发送请求</h4><p>按需获取方式，当前不需要的资源，就不提前请求。需要的时候再请求。比如网页资源。</p>
-<h3 id="3-减少HTTP响应数据大小"><a href="#3-减少HTTP响应数据大小" class="headerlink" title="3. 减少HTTP响应数据大小"></a>3. 减少HTTP响应数据大小</h3><p>压缩：</p>
+<h5 id="合并请求"><a href="#合并请求" class="headerlink" title="合并请求"></a>合并请求</h5><p>将资源合并，用一个大的资源请求获取多个小资源请求。比如需要请求多个图片，可以用技术把它们合并成一个图片，只需要一个请求就行了。</p>
+<h5 id="延时发送请求"><a href="#延时发送请求" class="headerlink" title="延时发送请求"></a>延时发送请求</h5><p>按需获取方式，当前不需要的资源，就不提前请求。需要的时候再请求。比如网页资源。</p>
+<h4 id="3-减少HTTP响应数据大小"><a href="#3-减少HTTP响应数据大小" class="headerlink" title="3. 减少HTTP响应数据大小"></a>3. 减少HTTP响应数据大小</h4><p>压缩：</p>
 <ul>
 <li>无损压缩：文本文件、程序可执行文件、源代码</li>
 <li>有损压缩：音频、图片、视频等</li>
 </ul>
-<h2 id="HTTPS-RSA握手解析"><a href="#HTTPS-RSA握手解析" class="headerlink" title="HTTPS RSA握手解析"></a>HTTPS RSA握手解析</h2><p><strong>RTT</strong>(往返时延)：发送端发送一个数据包到接收端，接收端返回确认包到发送端的整个时间。</p>
+<h3 id="HTTPS-RSA握手解析"><a href="#HTTPS-RSA握手解析" class="headerlink" title="HTTPS RSA握手解析"></a>HTTPS RSA握手解析</h3><p><strong>RTT</strong>(往返时延)：发送端发送一个数据包到接收端，接收端返回确认包到发送端的整个时间。</p>
 <p>整个TLS握手过程前面已经总结</p>
 <p>补充以下：</p>
 <ul>
@@ -507,7 +506,7 @@ TLS四次通信
 </li>
 </ul>
 <p>前向保密：即使密钥被泄露，过去的信息也不会被解密。每次通信生成的都是临时密钥。</p>
-<h2 id="HTTPS-ECDHE-握手解析"><a href="#HTTPS-ECDHE-握手解析" class="headerlink" title="HTTPS ECDHE 握手解析"></a>HTTPS ECDHE 握手解析</h2><p>算法核心思想：离散对数</p>
+<h3 id="HTTPS-ECDHE-握手解析"><a href="#HTTPS-ECDHE-握手解析" class="headerlink" title="HTTPS ECDHE 握手解析"></a>HTTPS ECDHE 握手解析</h3><p>算法核心思想：离散对数</p>
 <p>ECDHE算法具有前向安全，现在被广泛使用。</p>
 <p>DH-&gt;DHE-&gt;ECDHE</p>
 <p>ECDHE算法实在DHE算法基础上使用了ECC椭圆曲线特性，用更少的计算量计算出公钥和最终的会话密钥。</p>
@@ -535,7 +534,7 @@ TLS四次通信
 <li><p>RSA在TLS完成四次握手后才能进行应用数据的传输；而ECDHE算法，客户端可以不等服务器最后一次TLS握手就进行加密HTTP数据传送，节省一个RTT时间。</p>
 </li>
 </ol>
-<h2 id="HTTPS如何优化"><a href="#HTTPS如何优化" class="headerlink" title="HTTPS如何优化"></a>HTTPS如何优化</h2><p>先分析性能损耗，再来看怎么优化：</p>
+<h3 id="HTTPS如何优化"><a href="#HTTPS如何优化" class="headerlink" title="HTTPS如何优化"></a>HTTPS如何优化</h3><p>先分析性能损耗，再来看怎么优化：</p>
 <p>耗能阶段：</p>
 <ul>
 <li>TLS握手过程</li>
@@ -573,7 +572,7 @@ TLS四次通信
 </ul>
 </li>
 </ul>
-<h2 id="HTTP-2牛逼在哪"><a href="#HTTP-2牛逼在哪" class="headerlink" title="HTTP&#x2F;2牛逼在哪"></a>HTTP&#x2F;2牛逼在哪</h2><ul>
+<h3 id="HTTP-2牛逼在哪"><a href="#HTTP-2牛逼在哪" class="headerlink" title="HTTP&#x2F;2牛逼在哪"></a>HTTP&#x2F;2牛逼在哪</h3><ul>
 <li><p>兼容HTTP&#x2F;1.1</p>
 </li>
 <li><p>头部压缩：使用HPACK算法：（1）静态字典（2）动态字典（3）Huffman编码（压缩算法）</p>
@@ -587,6 +586,12 @@ TLS四次通信
 </li>
 <li><p>服务器主动推送资源：请求一个html，服务器可以主动发送css等。</p>
 </li>
+</ul>
+<h3 id="3-7-HTTP-3-强势来袭"><a href="#3-7-HTTP-3-强势来袭" class="headerlink" title="3.7 HTTP&#x2F;3 强势来袭"></a>3.7 HTTP&#x2F;3 强势来袭</h3><h3 id="3-8-既然有-HTTP-协议，为什么还要有-RPC？"><a href="#3-8-既然有-HTTP-协议，为什么还要有-RPC？" class="headerlink" title="3.8 既然有 HTTP 协议，为什么还要有 RPC？"></a>3.8 既然有 HTTP 协议，为什么还要有 RPC？</h3><h3 id="3-9-既然有-HTTP-协议，为什么还要有-WebSocket？"><a href="#3-9-既然有-HTTP-协议，为什么还要有-WebSocket？" class="headerlink" title="3.9 既然有 HTTP 协议，为什么还要有 WebSocket？"></a>3.9 既然有 HTTP 协议，为什么还要有 WebSocket？</h3><p>这三个直接看小林coding总结部分</p>
+<ul>
+<li>3.7：<a target="_blank" rel="noopener" href="https://www.xiaolincoding.com/network/2_http/http3.html#%E6%80%BB%E7%BB%93">https://www.xiaolincoding.com/network/2_http/http3.html#%E6%80%BB%E7%BB%93</a></li>
+<li>3.8：<a target="_blank" rel="noopener" href="https://www.xiaolincoding.com/network/2_http/http_rpc.html#%E6%80%BB%E7%BB%93">https://www.xiaolincoding.com/network/2_http/http_rpc.html#%E6%80%BB%E7%BB%93</a></li>
+<li>3.9：<a target="_blank" rel="noopener" href="https://www.xiaolincoding.com/network/2_http/http_websocket.html#%E6%80%BB%E7%BB%93">https://www.xiaolincoding.com/network/2_http/http_websocket.html#%E6%80%BB%E7%BB%93</a></li>
 </ul>
 
                 
