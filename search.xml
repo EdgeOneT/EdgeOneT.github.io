@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>每日学习（8）</title>
+      <link href="/2024/12/07/mei-ri-xue-xi-8/"/>
+      <url>/2024/12/07/mei-ri-xue-xi-8/</url>
+      
+        <content type="html"><![CDATA[<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><h4 id="32-将有序数组转换为二叉搜索树（平衡二叉树）"><a href="#32-将有序数组转换为二叉搜索树（平衡二叉树）" class="headerlink" title="32. 将有序数组转换为二叉搜索树（平衡二叉树）"></a>32. 将有序数组转换为二叉搜索树（平衡二叉树）</h4><p>要将数组一直划分成两份，就像搜索树左右大小不同一样，也是越往下越是划分左右大小。</p><p>三部曲中：</p><ul><li>判断终止条件为nums为空</li></ul><h4 id="33-把二叉搜索树转换为累加树"><a href="#33-把二叉搜索树转换为累加树" class="headerlink" title="33. 把二叉搜索树转换为累加树"></a>33. 把二叉搜索树转换为累加树</h4><ul><li>使用右中左递归顺序，来依次累加。</li></ul><h2 id="小林coding"><a href="#小林coding" class="headerlink" title="小林coding"></a>小林coding</h2><ul><li>看了TCP面试部分，没看多少</li></ul><h2 id="go-vue（新）"><a href="#go-vue（新）" class="headerlink" title="go-vue（新）"></a>go-vue（新）</h2><ul><li>Gin 框架中间件与配置模块</li></ul><ol><li>理解 Gin 框架中间件的工作原理，学习如何编写自定义中间件。</li><li>掌握常用中间件的实现，如日志记录、跨域处理、JWT 鉴权等。</li><li>学习如何设计和使用全局配置模块，管理项目的配置信息。</li></ol><h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><ul><li>日志</li><li>跨域</li><li>鉴权（JWT）</li></ul><h3 id="配置模式设计"><a href="#配置模式设计" class="headerlink" title="配置模式设计"></a>配置模式设计</h3><ul><li>config-config.go</li><li>yaml</li></ul><h3 id="练习任务"><a href="#练习任务" class="headerlink" title="练习任务"></a>练习任务</h3><ol><li><strong>日志中间件</strong><ul><li>编写一个日志中间件，记录请求方法、路径、客户端 IP、响应时间等信息。</li></ul></li><li><strong>跨域支持</strong><ul><li>实现一个跨域中间件，允许特定域名的请求。</li></ul></li><li><strong>配置模块</strong><ul><li>创建一个 <code>config.yaml</code>，加载数据库和 Redis 配置信息。</li><li>在主函数中调用配置，并打印配置信息。</li></ul></li><li><strong>综合练习</strong><ul><li>编写一个具有日志、跨域和 JWT 鉴权功能的 Gin 服务。</li></ul></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 每日学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LeetCode（二叉树） </tag>
+            
+            <tag> 小林coding（计算机网络） </tag>
+            
+            <tag> go-vue（新） </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>每日学习（7）</title>
       <link href="/2024/12/07/mei-ri-xue-xi-7/"/>
       <url>/2024/12/07/mei-ri-xue-xi-7/</url>
@@ -64,7 +93,7 @@
       <link href="/2024/12/04/go-vue-ready/"/>
       <url>/2024/12/04/go-vue-ready/</url>
       
-        <content type="html"><![CDATA[<h2 id="day1"><a href="#day1" class="headerlink" title="day1"></a>day1</h2><h3 id="1-路由与控制器"><a href="#1-路由与控制器" class="headerlink" title="1. 路由与控制器"></a>1. 路由与控制器</h3><ul><li>路由基础</li><li>控制器封装</li></ul><h3 id="2-中间件"><a href="#2-中间件" class="headerlink" title="2. 中间件"></a>2. 中间件</h3><p>对于中间件的处理：最终的完整响应是所有中间件和目标路由处理器处理完过后的响应。</p><h3 id="3-路由分组"><a href="#3-路由分组" class="headerlink" title="3. 路由分组"></a>3. 路由分组</h3><h3 id="4-练习任务"><a href="#4-练习任务" class="headerlink" title="4. 练习任务"></a>4. 练习任务</h3><ol><li>修改路由：<ul><li>添加 <code>/hello</code> 路由，返回 <code>&#123;&quot;message&quot;: &quot;hello, world!&quot;&#125;</code>。</li></ul></li><li>实现一个时间中间件：<ul><li>在响应中添加当前服务器时间。</li></ul></li><li>尝试实现一个 POST 接口：<ul><li>接收 JSON 数据，返回原数据。</li></ul></li></ol><h2 id="day2"><a href="#day2" class="headerlink" title="day2"></a>day2</h2><h3 id="gorm操作"><a href="#gorm操作" class="headerlink" title="gorm操作"></a>gorm操作</h3><ul><li><p>增</p></li><li><p>删</p></li><li><p>改</p></li><li><p>查</p></li><li><p>事务处理</p></li></ul><h3 id="练习任务"><a href="#练习任务" class="headerlink" title="练习任务"></a><strong>练习任务</strong></h3><ol><li><strong>创建一个用户模型</strong>，并进行基本的 CRUD 操作。</li><li><strong>为订单表设计一个与用户的一对多关系</strong>，完成用户与订单的相关操作。</li><li><strong>实现数据的事务处理</strong>，模拟一个修改用户与订单的操作，如果失败则回滚。</li></ol><h2 id="day3"><a href="#day3" class="headerlink" title="day3"></a>day3</h2><h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><p>redis主要是进行短期存储，虽然提供了持久化选项（如 RDB 快照和 AOF 日志），但其主要设计目标是高性能的内存操作。常用于缓存、消息队列、会话管理等场景。</p><p><strong>context</strong></p><ul><li><p><code>context</code> 是管理操作生命周期的核心工具。</p></li><li><p>四种 context 创建方式满足不同需求（根、取消、超时、存储值）。</p></li><li><p>常用于控制 goroutine、网络请求、数据库操作的生命周期。</p></li></ul><h3 id="JWT（JSON-Web-Token）"><a href="#JWT（JSON-Web-Token）" class="headerlink" title="JWT（JSON Web Token）"></a>JWT（JSON Web Token）</h3><p><strong>JWT 介绍</strong><br>JWT 是一种用于安全地传输信息的令牌，由三部分组成：</p><ul><li><strong>Header</strong>：声明令牌类型和加密算法。</li><li><strong>Payload</strong>：包含声明（例如用户信息）。</li><li><strong>Signature</strong>：用密钥签名确保数据的完整性。</li></ul><p><strong>JWT 的工作原理</strong>：</p><ul><li>用户登录后，服务器验证身份并生成 JWT Token。</li><li>客户端在后续请求中携带 Token，服务器验证 Token 以确认用户身份。</li></ul><h3 id="练习任务-1"><a href="#练习任务-1" class="headerlink" title="练习任务"></a><strong>练习任务</strong></h3><ol><li><strong>Redis 缓存练习</strong><ul><li>将用户信息存储到 Redis 中，并模拟缓存失效后从数据库重新获取数据。</li></ul></li><li><strong>JWT 登录功能</strong><ul><li>编写一个模拟登录接口，通过用户名生成 JWT Token，并验证 Token 的有效性。</li></ul></li><li><strong>Redis 与 JWT 结合</strong><ul><li>使用 Redis 存储已登录用户的 Token，模拟 Token 的过期或强制下线。</li></ul></li></ol>]]></content>
+        <content type="html"><![CDATA[<h2 id="day1"><a href="#day1" class="headerlink" title="day1"></a>day1</h2><h3 id="1-路由与控制器"><a href="#1-路由与控制器" class="headerlink" title="1. 路由与控制器"></a>1. 路由与控制器</h3><ul><li>路由基础</li><li>控制器封装</li></ul><h3 id="2-中间件"><a href="#2-中间件" class="headerlink" title="2. 中间件"></a>2. 中间件</h3><p>对于中间件的处理：最终的完整响应是所有中间件和目标路由处理器处理完过后的响应。</p><h3 id="3-路由分组"><a href="#3-路由分组" class="headerlink" title="3. 路由分组"></a>3. 路由分组</h3><h3 id="4-练习任务"><a href="#4-练习任务" class="headerlink" title="4. 练习任务"></a>4. 练习任务</h3><ol><li>修改路由：<ul><li>添加 <code>/hello</code> 路由，返回 <code>&#123;&quot;message&quot;: &quot;hello, world!&quot;&#125;</code>。</li></ul></li><li>实现一个时间中间件：<ul><li>在响应中添加当前服务器时间。</li></ul></li><li>尝试实现一个 POST 接口：<ul><li>接收 JSON 数据，返回原数据。</li></ul></li></ol><h2 id="day2"><a href="#day2" class="headerlink" title="day2"></a>day2</h2><h3 id="gorm操作"><a href="#gorm操作" class="headerlink" title="gorm操作"></a>gorm操作</h3><ul><li><p>增</p></li><li><p>删</p></li><li><p>改</p></li><li><p>查</p></li><li><p>事务处理</p></li></ul><h3 id="练习任务"><a href="#练习任务" class="headerlink" title="练习任务"></a><strong>练习任务</strong></h3><ol><li><strong>创建一个用户模型</strong>，并进行基本的 CRUD 操作。</li><li><strong>为订单表设计一个与用户的一对多关系</strong>，完成用户与订单的相关操作。</li><li><strong>实现数据的事务处理</strong>，模拟一个修改用户与订单的操作，如果失败则回滚。</li></ol><h2 id="day3"><a href="#day3" class="headerlink" title="day3"></a>day3</h2><h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><p>redis主要是进行短期存储，虽然提供了持久化选项（如 RDB 快照和 AOF 日志），但其主要设计目标是高性能的内存操作。常用于缓存、消息队列、会话管理等场景。</p><p><strong>context</strong></p><ul><li><p><code>context</code> 是管理操作生命周期的核心工具。</p></li><li><p>四种 context 创建方式满足不同需求（根、取消、超时、存储值）。</p></li><li><p>常用于控制 goroutine、网络请求、数据库操作的生命周期。</p></li></ul><h3 id="JWT（JSON-Web-Token）"><a href="#JWT（JSON-Web-Token）" class="headerlink" title="JWT（JSON Web Token）"></a>JWT（JSON Web Token）</h3><p><strong>JWT 介绍</strong><br>JWT 是一种用于安全地传输信息的令牌，由三部分组成：</p><ul><li><strong>Header</strong>：声明令牌类型和加密算法。</li><li><strong>Payload</strong>：包含声明（例如用户信息）。</li><li><strong>Signature</strong>：用密钥签名确保数据的完整性。</li></ul><p><strong>JWT 的工作原理</strong>：</p><ul><li>用户登录后，服务器验证身份并生成 JWT Token。</li><li>客户端在后续请求中携带 Token，服务器验证 Token 以确认用户身份。</li></ul><h3 id="练习任务-1"><a href="#练习任务-1" class="headerlink" title="练习任务"></a><strong>练习任务</strong></h3><ol><li><strong>Redis 缓存练习</strong><ul><li>将用户信息存储到 Redis 中，并模拟缓存失效后从数据库重新获取数据。</li></ul></li><li><strong>JWT 登录功能</strong><ul><li>编写一个模拟登录接口，通过用户名生成 JWT Token，并验证 Token 的有效性。</li></ul></li><li><strong>Redis 与 JWT 结合</strong><ul><li>使用 Redis 存储已登录用户的 Token，模拟 Token 的过期或强制下线。</li></ul></li></ol><h2 id="day4"><a href="#day4" class="headerlink" title="day4"></a>day4</h2><ul><li>Gin 框架中间件与配置模块</li></ul><ol><li>理解 Gin 框架中间件的工作原理，学习如何编写自定义中间件。</li><li>掌握常用中间件的实现，如日志记录、跨域处理、JWT 鉴权等。</li><li>学习如何设计和使用全局配置模块，管理项目的配置信息。</li></ol><h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><ul><li>日志</li><li>跨域</li><li>鉴权（JWT）</li></ul><h3 id="配置模式设计"><a href="#配置模式设计" class="headerlink" title="配置模式设计"></a>配置模式设计</h3><ul><li>config-config.go</li><li>yaml</li></ul><h3 id="练习任务-2"><a href="#练习任务-2" class="headerlink" title="练习任务"></a>练习任务</h3><ol><li><strong>日志中间件</strong><ul><li>编写一个日志中间件，记录请求方法、路径、客户端 IP、响应时间等信息。</li></ul></li><li><strong>跨域支持</strong><ul><li>实现一个跨域中间件，允许特定域名的请求。</li></ul></li><li><strong>配置模块</strong><ul><li>创建一个 <code>config.yaml</code>，加载数据库和 Redis 配置信息。</li><li>在主函数中调用配置，并打印配置信息。</li></ul></li><li><strong>综合练习</strong><ul><li>编写一个具有日志、跨域和 JWT 鉴权功能的 Gin 服务。</li></ul></li></ol>]]></content>
       
       
       <categories>

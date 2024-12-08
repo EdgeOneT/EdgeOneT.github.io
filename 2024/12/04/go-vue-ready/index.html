@@ -437,14 +437,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-12-07
+                    2024-12-08
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    548
+                    772
                 </div>
                 
 
@@ -529,6 +529,42 @@
 </li>
 <li><strong>Redis 与 JWT 结合</strong><ul>
 <li>使用 Redis 存储已登录用户的 Token，模拟 Token 的过期或强制下线。</li>
+</ul>
+</li>
+</ol>
+<h2 id="day4"><a href="#day4" class="headerlink" title="day4"></a>day4</h2><ul>
+<li>Gin 框架中间件与配置模块</li>
+</ul>
+<ol>
+<li>理解 Gin 框架中间件的工作原理，学习如何编写自定义中间件。</li>
+<li>掌握常用中间件的实现，如日志记录、跨域处理、JWT 鉴权等。</li>
+<li>学习如何设计和使用全局配置模块，管理项目的配置信息。</li>
+</ol>
+<h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><ul>
+<li>日志</li>
+<li>跨域</li>
+<li>鉴权（JWT）</li>
+</ul>
+<h3 id="配置模式设计"><a href="#配置模式设计" class="headerlink" title="配置模式设计"></a>配置模式设计</h3><ul>
+<li>config-config.go</li>
+<li>yaml</li>
+</ul>
+<h3 id="练习任务-2"><a href="#练习任务-2" class="headerlink" title="练习任务"></a>练习任务</h3><ol>
+<li><strong>日志中间件</strong><ul>
+<li>编写一个日志中间件，记录请求方法、路径、客户端 IP、响应时间等信息。</li>
+</ul>
+</li>
+<li><strong>跨域支持</strong><ul>
+<li>实现一个跨域中间件，允许特定域名的请求。</li>
+</ul>
+</li>
+<li><strong>配置模块</strong><ul>
+<li>创建一个 <code>config.yaml</code>，加载数据库和 Redis 配置信息。</li>
+<li>在主函数中调用配置，并打印配置信息。</li>
+</ul>
+</li>
+<li><strong>综合练习</strong><ul>
+<li>编写一个具有日志、跨域和 JWT 鉴权功能的 Gin 服务。</li>
 </ul>
 </li>
 </ol>
