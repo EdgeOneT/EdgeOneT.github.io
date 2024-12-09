@@ -437,14 +437,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-12-08
+                    2024-12-09
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    772
+                    1.2k
                 </div>
                 
 
@@ -568,6 +568,34 @@
 </ul>
 </li>
 </ol>
+<h2 id="day5"><a href="#day5" class="headerlink" title="day5"></a>day5</h2><ul>
+<li>用户管理</li>
+</ul>
+<h3 id="用户列表分页作用"><a href="#用户列表分页作用" class="headerlink" title="用户列表分页作用"></a>用户列表分页作用</h3><h4 id="1-提升用户体验"><a href="#1-提升用户体验" class="headerlink" title="1. 提升用户体验"></a>1. <strong>提升用户体验</strong></h4><ul>
+<li><strong>减少加载时间</strong>：如果用户列表包含成百上千的用户，一次性加载所有数据会导致页面加载缓慢。分页可以显著减少每次请求的数据量，提高加载速度。</li>
+<li><strong>便于浏览</strong>：分页将用户列表分成多个页面，方便用户逐页查看，避免信息过载。</li>
+</ul>
+<h4 id="2-节省资源"><a href="#2-节省资源" class="headerlink" title="2. 节省资源"></a>2. <strong>节省资源</strong></h4><ul>
+<li><strong>降低服务器负载</strong>：分页可以减少每次从数据库查询和返回的数据量，降低服务器内存和网络资源的占用。</li>
+<li><strong>优化前端性能</strong>：前端渲染大量数据会导致性能下降。分页让前端只需渲染当前页的数据，减轻浏览器负担。</li>
+</ul>
+<h4 id="3-支持数据检索和管理"><a href="#3-支持数据检索和管理" class="headerlink" title="3. 支持数据检索和管理"></a>3. <strong>支持数据检索和管理</strong></h4><ul>
+<li><strong>便于查找特定用户</strong>：结合分页和搜索功能，用户可以快速定位目标用户，而不需要滚动浏览整个列表。</li>
+<li><strong>便于排序和过滤</strong>：分页让用户可以对数据进行动态排序或过滤，而无需等待整个列表重新加载。</li>
+</ul>
+<h4 id="4-增强数据的可控性"><a href="#4-增强数据的可控性" class="headerlink" title="4. 增强数据的可控性"></a>4. <strong>增强数据的可控性</strong></h4><ul>
+<li><strong>分步加载</strong>：分页实现了按需加载数据的机制，避免一次性加载所有数据可能带来的错误或系统崩溃。</li>
+<li><strong>支持无限滚动</strong>：虽然是分页的另一种形式，基于分页的无限滚动可以提供更现代的交互体验，同时保持分页的性能优势。</li>
+</ul>
+<hr>
+<p>实现了：</p>
+<ul>
+<li>数据操作层</li>
+<li>业务逻辑层</li>
+<li>控制器层</li>
+</ul>
+<p><code>Query</code>：用于获取 URL 查询字符串（<code>?key=value</code>）。</p>
+<p><code>Param</code>：用于获取 URL 路径中的动态部分（<code>/path/:param</code>）</p>
 
                 
             </div>
