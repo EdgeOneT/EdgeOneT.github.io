@@ -5,8 +5,8 @@
     
     <entry>
       <title>每日学习（8）</title>
-      <link href="/2024/12/07/mei-ri-xue-xi-8/"/>
-      <url>/2024/12/07/mei-ri-xue-xi-8/</url>
+      <link href="/2024/12/08/mei-ri-xue-xi-8/"/>
+      <url>/2024/12/08/mei-ri-xue-xi-8/</url>
       
         <content type="html"><![CDATA[<h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><h4 id="32-将有序数组转换为二叉搜索树（平衡二叉树）"><a href="#32-将有序数组转换为二叉搜索树（平衡二叉树）" class="headerlink" title="32. 将有序数组转换为二叉搜索树（平衡二叉树）"></a>32. 将有序数组转换为二叉搜索树（平衡二叉树）</h4><p>要将数组一直划分成两份，就像搜索树左右大小不同一样，也是越往下越是划分左右大小。</p><p>三部曲中：</p><ul><li>判断终止条件为nums为空</li></ul><h4 id="33-把二叉搜索树转换为累加树"><a href="#33-把二叉搜索树转换为累加树" class="headerlink" title="33. 把二叉搜索树转换为累加树"></a>33. 把二叉搜索树转换为累加树</h4><ul><li>使用右中左递归顺序，来依次累加。</li></ul><h2 id="小林coding"><a href="#小林coding" class="headerlink" title="小林coding"></a>小林coding</h2><ul><li>看了TCP面试部分，没看多少</li></ul><h2 id="go-vue（新）"><a href="#go-vue（新）" class="headerlink" title="go-vue（新）"></a>go-vue（新）</h2><ul><li>Gin 框架中间件与配置模块</li></ul><ol><li>理解 Gin 框架中间件的工作原理，学习如何编写自定义中间件。</li><li>掌握常用中间件的实现，如日志记录、跨域处理、JWT 鉴权等。</li><li>学习如何设计和使用全局配置模块，管理项目的配置信息。</li></ol><h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><ul><li>日志</li><li>跨域</li><li>鉴权（JWT）</li></ul><h3 id="配置模式设计"><a href="#配置模式设计" class="headerlink" title="配置模式设计"></a>配置模式设计</h3><ul><li>config-config.go</li><li>yaml</li></ul><h3 id="练习任务"><a href="#练习任务" class="headerlink" title="练习任务"></a>练习任务</h3><ol><li><strong>日志中间件</strong><ul><li>编写一个日志中间件，记录请求方法、路径、客户端 IP、响应时间等信息。</li></ul></li><li><strong>跨域支持</strong><ul><li>实现一个跨域中间件，允许特定域名的请求。</li></ul></li><li><strong>配置模块</strong><ul><li>创建一个 <code>config.yaml</code>，加载数据库和 Redis 配置信息。</li><li>在主函数中调用配置，并打印配置信息。</li></ul></li><li><strong>综合练习</strong><ul><li>编写一个具有日志、跨域和 JWT 鉴权功能的 Gin 服务。</li></ul></li></ol>]]></content>
       
