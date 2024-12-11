@@ -4,8 +4,18 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="标签: redis, Hexo">
-    <meta name="description" content="Hexo">
+    <meta name="keywords" content="每日学习（10、11）, Hexo">
+    <meta name="description" content="LeetCode4. 组合总和III
+模板解题
+
+5. 电话号码的字母组合
+模板解题，注意string-&amp;gt;[]byte
+
+7. 组合总和
+保证无重复的数组：需要有start，并且start=i
+
+8. 组合总和II
+重点是去重（同层的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +27,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>标签: redis | Hexo</title>
+    <title>每日学习（10、11） | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -333,347 +343,595 @@
 
 </header>
 
-    <div class="bg-cover pd-header about-cover">
-    <div class="container">
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">每日学习（10、11）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
     <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                    subtitle
-                
-            </div>
-
-            <div class="description center-align">
-                
-                <span id="subtitle"></span>
-                <script src="/libs/typed/typed.js"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: [ 
-                            
-                                "也无风雨也无晴",
-                            
-                                "Neither wind nor rain, neither sunny nor cloudy.",
-                            
-                        ],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
-</script>
-<script>
-    
-      var bannerUrl = "/medias/featureimages/" + Math.floor(Math.random() * 24) + '.jpg';
-    
-    $('.bg-cover.about-cover').css('background-image', 'url(' + bannerUrl + ')');
-
-</script>
-
-
-    </div>
-</div>
-
-<main class="content">
-
-    
-
-<div id="tags" class="container chip-container">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
     <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fas fa-tags"></i>&nbsp;&nbsp;文章标签
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/LeetCode%EF%BC%88%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%89/">
+                                <span class="chip bg-color">LeetCode（二叉树）</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%B0%8F%E6%9E%97coding%EF%BC%88%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%89/">
+                                <span class="chip bg-color">小林coding（计算机网络）</span>
+                            </a>
+                        
+                            <a href="/tags/go-vue%EF%BC%88%E6%96%B0%EF%BC%89/">
+                                <span class="chip bg-color">go-vue（新）</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%AF%8F%E6%97%A5%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                每日学习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
             </div>
-            <div class="tag-chips">
+
+            <div class="post-info">
                 
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2024-12-11
+                </div>
                 
-                <a href="/tags/golang/" title="golang: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="golang" style="background-color: #F9EBEA;">golang
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
+
                 
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2024-12-11
+                </div>
                 
-                <a href="/tags/gin/" title="gin: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="gin" style="background-color: #F5EEF8;">gin
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
+
                 
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.2k
+                </div>
                 
-                <a href="/tags/gorm/" title="gorm: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="gorm" style="background-color: #D5F5E3;">gorm
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
+
                 
+
                 
-                <a href="/tags/redis/" title="redis: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            data-tagname="redis" style="background-color: #E8F8F5;">redis
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h2><h4 id="4-组合总和III"><a href="#4-组合总和III" class="headerlink" title="4. 组合总和III"></a>4. 组合总和III</h4><ul>
+<li>模板解题</li>
+</ul>
+<h4 id="5-电话号码的字母组合"><a href="#5-电话号码的字母组合" class="headerlink" title="5. 电话号码的字母组合"></a>5. 电话号码的字母组合</h4><ul>
+<li>模板解题，注意string-&gt;[]byte</li>
+</ul>
+<h4 id="7-组合总和"><a href="#7-组合总和" class="headerlink" title="7. 组合总和"></a>7. 组合总和</h4><ul>
+<li>保证无重复的数组：需要有<code>start</code>，并且<code>start=i</code></li>
+</ul>
+<h4 id="8-组合总和II"><a href="#8-组合总和II" class="headerlink" title="8. 组合总和II"></a>8. 组合总和II</h4><ul>
+<li>重点是去重（同层的重复去掉）</li>
+</ul>
+<h2 id="小林coding"><a href="#小林coding" class="headerlink" title="小林coding"></a>小林coding</h2><h4 id="TCP基本认识"><a href="#TCP基本认识" class="headerlink" title="TCP基本认识"></a>TCP基本认识</h4><h5 id="UDP-和-TCP-有什么区别呢？分别的应用场景是？"><a href="#UDP-和-TCP-有什么区别呢？分别的应用场景是？" class="headerlink" title="UDP 和 TCP 有什么区别呢？分别的应用场景是？"></a>UDP 和 TCP 有什么区别呢？分别的应用场景是？</h5><p><strong>区别：</strong></p>
+<ul>
+<li>连接<ul>
+<li>TCP面向连接、传输前要建立连接</li>
+<li>UDP直接传输</li>
+</ul>
+</li>
+<li>服务对象<ul>
+<li>TCP一对一</li>
+<li>UDP一对一、一对多、多对多</li>
+</ul>
+</li>
+<li>可靠性<ul>
+<li>TCP传输可靠数据</li>
+<li>UDP不保证（但是可通过QUIC等协议实现可靠传输）</li>
+</ul>
+</li>
+<li>拥塞控制、流量控制<ul>
+<li>TCP有，保证数据安全</li>
+<li>UDP无，网络再堵，不影响它发送</li>
+</ul>
+</li>
+<li>首部开销<ul>
+<li>TCP首部可变（开销大）</li>
+<li>UDP固定不变（8个字节，开销小）</li>
+</ul>
+</li>
+<li>传输方式<ul>
+<li>流式传输，无边界，可保证顺序和可靠</li>
+<li>包发送，有边界，可能丢包和乱序</li>
+</ul>
+</li>
+<li>分片不同<ul>
+<li>TCP的数据大于MSS，传输层分片</li>
+<li>UDP的数据大于MTU，IP层分片</li>
+</ul>
+</li>
+</ul>
+<p><strong>应用场景</strong>：</p>
+<ul>
+<li>TCP<ul>
+<li>FTP文件传输</li>
+<li>HTPP&#x2F;HTTPS</li>
+</ul>
+</li>
+<li>UDP<ul>
+<li>DNS，SNMP</li>
+<li>视频、音频等多媒体</li>
+<li>广播通信</li>
+</ul>
+</li>
+</ul>
+<p><strong>为什么 UDP 头部没有「首部长度」字段，而 TCP 头部有「首部长度」字段呢？</strong></p>
+<ul>
+<li>UDP头部固定、无需额外记录</li>
+<li>TCP头部有个选项，该长度可变，导致TCP头部不固定，需要记录。</li>
+</ul>
+<p><strong>为什么 UDP 头部有「包长度」字段，而 TCP 头部则没有「包长度」字段呢？</strong></p>
+<ul>
+<li>TCP数据长度&#x3D;IP总长-IP首部长度-TCP首部长度，这三个长度都是已知的，可以直接算出，不需要额外算出来。</li>
+<li>UDP由于方便处理，需要保证首部长度是4的整数倍，补充了包长度。</li>
+</ul>
+<h5 id="TCP-和-UDP-可以使用同一个端口吗？"><a href="#TCP-和-UDP-可以使用同一个端口吗？" class="headerlink" title="TCP 和 UDP 可以使用同一个端口吗？"></a>TCP 和 UDP 可以使用同一个端口吗？</h5><p>可以</p>
+<p>TCP 和UDP，在内核中是两个完全独立的软件模块。</p>
+<p>TCP和UDP各自端口号是独立的，他们的80端口是不一样的。</p>
+<p>注：后续还有更详细的内容</p>
+<h4 id="TCP-连接建立"><a href="#TCP-连接建立" class="headerlink" title="TCP 连接建立"></a>TCP 连接建立</h4><h5 id="TCP三次握手过程是怎么样的"><a href="#TCP三次握手过程是怎么样的" class="headerlink" title="TCP三次握手过程是怎么样的"></a>TCP三次握手过程是怎么样的</h5><p>SYN–&gt;ACK、SYN–&gt;ACK</p>
+<ul>
+<li>第一次：客户端发送包文，里面的SYN置1，生成随机序列号（假设为A），不带应用层数据，自己状态变为SYN–SENT</li>
+<li>第二次：服务端发送包文，里面的ACK、SYN置1，生成随机序列号（假设为B），包文的确认应答号设为（A+1），不带应用层数据，自己状态变为SYN–RCVD</li>
+<li>第三次：客户端发送报文，ACK置1，确认应答号设为（B+1），可带应用层数据，状态设为ESTABLISHED</li>
+<li>服务端收到包文，状态也设为ESTABLISHED</li>
+</ul>
+<p>注：在第三次握手的时候就可以携带数据，前两次不行。状态都为ESTABLISHED时，就可互相发送数据了。</p>
+<h5 id="如何在-Linux-系统中查看-TCP-状态？"><a href="#如何在-Linux-系统中查看-TCP-状态？" class="headerlink" title="如何在 Linux 系统中查看 TCP 状态？"></a>如何在 Linux 系统中查看 TCP 状态？</h5><p><code>etstat -napt</code>命令查看</p>
+<h5 id="为什么是三次握手？不是两次、四次？"><a href="#为什么是三次握手？不是两次、四次？" class="headerlink" title="为什么是三次握手？不是两次、四次？"></a>为什么是三次握手？不是两次、四次？</h5><ol>
+<li><strong>避免历史连接</strong></li>
+</ol>
+<p>可能由于客户端宕机，第一次发送的请求就失效了，但是第一次发送的请求已经到达服务器，服务器就会返回一个对第一个连接的ACK。同时客户端已经发送了新的请求，接收到服务器对原来请求的ACK，发现不是新连接需要的。就会发送RET，这样服务器就知道原来的没用了，就会接收新的。避免了历史连接。</p>
+<ol start="2">
+<li><strong>同步双方初始序列号</strong></li>
+</ol>
+<p>序列号是可靠传输的关键，两次握手只能保证一方的初始序列号能被对方接受。                                                                                                                                                                                                                                                                                                                                                                                                                                    </p>
+<p>序列号作用：</p>
+<ul>
+<li>接收方除去重复数据</li>
+<li>接收方根据数据包的序列号按序接收</li>
+<li>可以知道发出去的数据包哪些被正确接收</li>
+</ul>
+<ol start="3">
+<li><strong>避免资源浪费</strong></li>
+</ol>
+<p>只有两次握手会导致建立多的连接，浪费资源。</p>
+<p>综上，三次握手可以避免历史连接，减少不必要的开销以及同步双方初始序列号。</p>
+<p>两次不能实现避免历<del>、减少</del>、同步~</p>
+<p>而对于四次握手，三次握手就是理论最少握手次数，不需要更多通信次数。</p>
+<h5 id="为什么每次建立-TCP-连接时，初始化的序列号都要求不一样呢？"><a href="#为什么每次建立-TCP-连接时，初始化的序列号都要求不一样呢？" class="headerlink" title="为什么每次建立 TCP 连接时，初始化的序列号都要求不一样呢？"></a>为什么每次建立 TCP 连接时，初始化的序列号都要求不一样呢？</h5><ul>
+<li>防止历史报文被下一个相同四元组的连接接收（主要方面）</li>
+<li>为了安全性，防止黑客伪造相同序列号的TCP被接收</li>
+</ul>
+<h5 id="初始序列号-ISN-是如何随机产生的？"><a href="#初始序列号-ISN-是如何随机产生的？" class="headerlink" title="初始序列号 ISN 是如何随机产生的？"></a>初始序列号 ISN 是如何随机产生的？</h5><p>基于计时器</p>
+<p>ISN &#x3D; M + F(localhost, localport, remotehost, remoteport)</p>
+<p>M是计时器，随着时间要增加</p>
+<h2 id="go-vue（新）"><a href="#go-vue（新）" class="headerlink" title="go-vue（新）"></a>go-vue（新）</h2><ul>
+<li>swagger</li>
+<li>captcha</li>
+</ul>
+
                 
-                
-                <a href="/tags/mysql/" title="mysql: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="mysql" style="background-color: #FEF9E7;">mysql
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/swagger/" title="swagger: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="swagger" style="background-color: #F8F9F9;">swagger
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/jwt/" title="jwt: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="jwt" style="background-color: #82E0AA;">jwt
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/base64Captcha/" title="base64Captcha: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="base64Captcha" style="background-color: #D7BDE2;">base64Captcha
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/yaml/" title="yaml: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="yaml" style="background-color: #A3E4D7;">yaml
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/LeetCode%EF%BC%88%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%89/" title="LeetCode（二叉树）: 10">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="LeetCode（二叉树）" style="background-color: #85C1E9;">LeetCode（二叉树）
-                        <span class="tag-length">10</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%B0%8F%E6%9E%97coding%EF%BC%88%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%89/" title="小林coding（计算机网络）: 8">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="小林coding（计算机网络）" style="background-color: #F8C471;">小林coding（计算机网络）
-                        <span class="tag-length">8</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/go-vue/" title="go-vue: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="go-vue" style="background-color: #F9E79F;">go-vue
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/" title="课程作业: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="课程作业" style="background-color: #85C1E9;">课程作业
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/go-vue%EF%BC%88%E6%96%B0%EF%BC%89/" title="go-vue（新）: 5">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="go-vue（新）" style="background-color: #FFF;">go-vue（新）
-                        <span class="tag-length">5</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/LeetCode/" title="LeetCode: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="LeetCode" style="background-color: #F9EBEA;">LeetCode
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E7%AE%97%E6%B3%95/" title="算法: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="算法" style="background-color: #F9EBEA;">算法
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/Golang/" title="Golang: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="Golang" style="background-color: #F5EEF8;">Golang
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" title="计算机基础: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="计算机基础" style="background-color: #E8F8F5;">计算机基础
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E8%AE%A1%E7%BD%91%E9%9D%A2%E8%AF%95%E9%A2%98/" title="计网面试题: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="计网面试题" style="background-color: #F8C471;">计网面试题
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="基础知识: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="基础知识" style="background-color: #D5F5E3;">基础知识
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/" title="联邦学习: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="联邦学习" style="background-color: #F8C471;">联邦学习
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E4%BC%9A%E8%AE%AE%E6%9C%9F%E5%88%8A/" title="会议期刊: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="会议期刊" style="background-color: #FFF;">会议期刊
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">OneBy</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://edgeonet.github.io/2024/12/11/mei-ri-xue-xi-10-11/">https://edgeonet.github.io/2024/12/11/mei-ri-xue-xi-10-11/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">OneBy</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/LeetCode%EF%BC%88%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%89/">
+                                    <span class="chip bg-color">LeetCode（二叉树）</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%B0%8F%E6%9E%97coding%EF%BC%88%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%89/">
+                                    <span class="chip bg-color">小林coding（计算机网络）</span>
+                                </a>
+                            
+                                <a href="/tags/go-vue%EF%BC%88%E6%96%B0%EF%BC%89/">
+                                    <span class="chip bg-color">go-vue（新）</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-    
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
 
-    <article id="articles" class="container articles">
-        <div class="row tags-posts">
-            
-            
-            <div class="article tag-post col s12 m6 l4" data-tags="golang, gin, gorm, redis, mysql, swagger, jwt, base64Captcha, yaml" data-aos="fade-up">
-                <div class="card">
-                    <a href="/2024/12/04/go-vue-ready/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Go-Vue（新）">
-                            
-                            <span class="card-title">Go-Vue（新）</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-12-04
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/" class="post-category">
-                                后端项目
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            
-            <div class="article tag-post col s12 m6 l4" data-tags="golang, gin, gorm, redis, mysql" data-aos="fade-up">
-                <div class="card">
-                    <a href="/2024/11/28/go-vue/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Go-Vue通用后台管理">
-                            
-                            <span class="card-title">Go-Vue通用后台管理</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-11-28
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/" class="post-category">
-                                后端项目
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
             
         </div>
-    </article>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2024/12/11/mei-ri-xue-xi-10-11/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="每日学习（10、11）">
+                        
+                        <span class="card-title">每日学习（10、11）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-12-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%AF%8F%E6%97%A5%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    每日学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/LeetCode%EF%BC%88%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%89/">
+                        <span class="chip bg-color">LeetCode（二叉树）</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B0%8F%E6%9E%97coding%EF%BC%88%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%89/">
+                        <span class="chip bg-color">小林coding（计算机网络）</span>
+                    </a>
+                    
+                    <a href="/tags/go-vue%EF%BC%88%E6%96%B0%EF%BC%89/">
+                        <span class="chip bg-color">go-vue（新）</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/12/09/mei-ri-xue-xi-9/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="每日学习（9）">
+                        
+                        <span class="card-title">每日学习（9）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-12-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%AF%8F%E6%97%A5%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    每日学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/LeetCode%EF%BC%88%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%89/">
+                        <span class="chip bg-color">LeetCode（二叉树）</span>
+                    </a>
+                    
+                    <a href="/tags/go-vue%EF%BC%88%E6%96%B0%EF%BC%89/">
+                        <span class="chip bg-color">go-vue（新）</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
 </main>
 
 
