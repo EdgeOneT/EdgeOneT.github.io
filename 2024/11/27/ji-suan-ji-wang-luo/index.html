@@ -404,14 +404,14 @@ TLS四次通信
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-12-11
+                    2024-12-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.8k
+                    4.3k
                 </div>
                 
 
@@ -696,6 +696,32 @@ TLS四次通信
 <h5 id="初始序列号-ISN-是如何随机产生的？"><a href="#初始序列号-ISN-是如何随机产生的？" class="headerlink" title="初始序列号 ISN 是如何随机产生的？"></a>初始序列号 ISN 是如何随机产生的？</h5><p>基于计时器</p>
 <p>ISN &#x3D; M + F(localhost, localport, remotehost, remoteport)</p>
 <p>M是计时器，随着时间要增加</p>
+<h5 id="既然-IP-层会分片，为什么-TCP-层还需要-MSS-呢？"><a href="#既然-IP-层会分片，为什么-TCP-层还需要-MSS-呢？" class="headerlink" title="既然 IP 层会分片，为什么 TCP 层还需要 MSS 呢？"></a>既然 IP 层会分片，为什么 TCP 层还需要 MSS 呢？</h5><ul>
+<li>IP层进行分片传输，效率很低。因为一个IP分片丢了，整个IP报文分片都需要重传。并且IP层本身没有超时重传机制，只能等传输层TCP来负责。就会重传整个TCP报文，效率太低。</li>
+<li>通过协商MSS值后，只会进行TCP切片，形成的包不会大于MTU，就不会进行IP分片。即便重传也只是以MSS单位，不会重传所有分片。</li>
+<li>MSS最长为1500字节</li>
+</ul>
+<h5 id="第一次握手丢失了，会发生什么？"><a href="#第一次握手丢失了，会发生什么？" class="headerlink" title="第一次握手丢失了，会发生什么？"></a>第一次握手丢失了，会发生什么？</h5><ul>
+<li>会进行重传SYN，SYN报文的序列号是一样的。并且重传的SYN的次数限制由内核的<code>tcp_syn_retries</code>参数控制，默认为5。最后一次重传在等待一段时间还是没有收到ACK报文就会断开连接。</li>
+<li>每次重传是在上次的两倍后（1s, 2s, 4s, 8s….）</li>
+</ul>
+<h5 id="第二次握手丢失了，会发生什么？"><a href="#第二次握手丢失了，会发生什么？" class="headerlink" title="第二次握手丢失了，会发生什么？"></a>第二次握手丢失了，会发生什么？</h5><ul>
+<li>客户端和服务端都会触发超时重传机制。因为客户端没收到ACK，服务端也没收到ACK。并且同样重传次数由参数控制<code>tcp_syn_retries</code>和<code>tcp_synack_retries</code>，默认值都为5。</li>
+<li>并且某一个超时重传次数过了就直接会断开连接。</li>
+</ul>
+<h5 id="第三次握手丢失了，会发生什么？"><a href="#第三次握手丢失了，会发生什么？" class="headerlink" title="第三次握手丢失了，会发生什么？"></a>第三次握手丢失了，会发生什么？</h5><ul>
+<li>服务端触发超时重传机制，重发SYN_ACK报文，知道收到ACK或者断开连接。</li>
+</ul>
+<h5 id="什么是-SYN-攻击？如何避免-SYN-攻击？"><a href="#什么是-SYN-攻击？如何避免-SYN-攻击？" class="headerlink" title="什么是 SYN 攻击？如何避免 SYN 攻击？"></a>什么是 SYN 攻击？如何避免 SYN 攻击？</h5><ul>
+<li>恶意客户端一直发送SYN报文，占满服务器的半连接队列（内核里），导致后续的SYN报文直接被丢弃。</li>
+<li>避免<ul>
+<li>调大netdev_max_backlog</li>
+<li>增大TCP半连接队列</li>
+<li>开启net.ipv4.tcp_syncookies</li>
+<li>减少 SYN+ACK 重传次数</li>
+</ul>
+</li>
+</ul>
 
                 
             </div>
