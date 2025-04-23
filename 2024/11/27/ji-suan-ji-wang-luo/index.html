@@ -5,9 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="计算机网络, Hexo">
-    <meta name="description" content="计算机网络HTTP篇HTTP常见面试题HTTPS 是如何建立连接的？其间交互了什么？通过SSL&amp;#x2F;TLS协议建立，也就是TLS握手阶段
-TLS四次通信
-第一次：客户端发送:（1）支持的TLS版本（2）生成的随机数（3）支持的加密算法">
+    <meta name="description" content="计算机网络基础篇输入网址后，到页面显示发生了什么（1）浏览器进行解析URL，生成发送给Web服务器的HTTP请求信息
+（2）查找服务器域名对应IP地址，进行DNS域名解析（浏览器缓存-&amp;gt;操作系统缓存-&amp;gt;hosts文件-&amp;gt;本">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -404,14 +403,14 @@ TLS四次通信
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-12-13
+                    2025-04-23
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.3k
+                    7.2k
                 </div>
                 
 
@@ -428,7 +427,46 @@ TLS四次通信
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="HTTP篇"><a href="#HTTP篇" class="headerlink" title="HTTP篇"></a>HTTP篇</h2><h3 id="HTTP常见面试题"><a href="#HTTP常见面试题" class="headerlink" title="HTTP常见面试题"></a>HTTP常见面试题</h3><h4 id="HTTPS-是如何建立连接的？其间交互了什么？"><a href="#HTTPS-是如何建立连接的？其间交互了什么？" class="headerlink" title="HTTPS 是如何建立连接的？其间交互了什么？"></a>HTTPS 是如何建立连接的？其间交互了什么？</h4><p>通过SSL&#x2F;TLS协议建立，也就是TLS握手阶段</p>
+                <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h2><h3 id="输入网址后，到页面显示发生了什么"><a href="#输入网址后，到页面显示发生了什么" class="headerlink" title="输入网址后，到页面显示发生了什么"></a>输入网址后，到页面显示发生了什么</h3><p>（1）浏览器进行<strong>解析URL</strong>，<strong>生成</strong>发送给Web服务器的<strong>HTTP请求信息</strong></p>
+<p>（2）查找<strong>服务器域名</strong>对应IP地址，进行DNS域名解析（浏览器缓存-&gt;操作系统缓存-&gt;hosts文件-&gt;本地DNS服务器；本地会从高问到底：根DNS-&gt;顶级域DNS-&gt;权威DNS）</p>
+<p>（3）HTTP传输工作交给协议栈</p>
+<p>（4）在传输层：建立TCP连接，封装TCP头部，生成TCP报文</p>
+<p>（5）在网络层：添加IP头部，里面包括源IP和目标IP，生成IP数据报</p>
+<p>（6）在数据链路层：添加MAC头部，里面包括源MAC地址和目标MAC地址，生成MAC帧</p>
+<p>（7）网络包是一串二进制数字信息，需要在网卡上将数字信号转化为电信号，通过网线进行发送</p>
+<p>（8）数据到达交换机，将电信号转化为数字信号进行包末尾的<code>FCS</code>校验，并通过查找MAC地址表转发到相应端口</p>
+<p>（9）到达路由器，将电信号转化为数字信号进行包末尾的<code>FCS</code>校验，去掉MAC帧，通过目标IP查询路由表，确定下一跳地址；然后重新封装MAC头部，发送数据，直到达到服务器所在网络</p>
+<p>（10）到达目标服务器，进行逐层的解封装，做出响应。</p>
+<p>（11）客户端接收到相应后，解析到只剩HTTP响应报文，交给浏览器进行渲染，页面就显示出来了</p>
+<h2 id="HTTP篇"><a href="#HTTP篇" class="headerlink" title="HTTP篇"></a>HTTP篇</h2><h3 id="HTTP常见面试题"><a href="#HTTP常见面试题" class="headerlink" title="HTTP常见面试题"></a>HTTP常见面试题</h3><h4 id="HTTP基本概念"><a href="#HTTP基本概念" class="headerlink" title="HTTP基本概念"></a>HTTP基本概念</h4><h5 id="HTTP是什么？"><a href="#HTTP是什么？" class="headerlink" title="HTTP是什么？"></a>HTTP是什么？</h5><p>HTTP是超文本传输协议</p>
+<p>具体而言：HTTP是一个在计算机世界里专门在<strong>两点</strong>之间<strong>传输</strong>文字、图片、音频、视频等<strong>超文本</strong>数据的<strong>约定和规范</strong>。</p>
+<h5 id="HTTP常见的状态码"><a href="#HTTP常见的状态码" class="headerlink" title="HTTP常见的状态码"></a>HTTP常见的状态码</h5><p><code>1xx</code>：提示信息，属于处理协议的中间状态</p>
+<p><code>2xx</code>：表示服务器成功处理客户端请求</p>
+<ul>
+<li>200：表示一切正常</li>
+<li>204：和200基本一致，响应头没有body数据</li>
+<li>206：表示相应的数据不是全部，只是一部分（分块下载、断点续传）</li>
+</ul>
+<p><code>3xx</code>：表示请求资源发生变动，需要重定向到新的URL</p>
+<ul>
+<li>301：永久重定向</li>
+<li>302：临时重定向</li>
+<li>304：资源未改变，只是重定向到新的缓存文件</li>
+</ul>
+<p><code>4xx</code>：客户端报文有误，服务器无法处理</p>
+<ul>
+<li>400：客户端报文有误，但只是一个笼统的错误</li>
+<li>403：服务器禁止访问资源，客户端请求没出错</li>
+<li>404：资源在客户端没有或者没找到</li>
+</ul>
+<p><code>5xx</code>：服务器处理时内部发生错误</p>
+<ul>
+<li>500：笼统的错误</li>
+<li>501：客户端请求的功能还不支持</li>
+<li>502：服务器作为网关或者代理时发生的错误码，自身工作正常，访问后端服务器发生错误</li>
+<li>503：服务器忙，暂时无法响应客户端</li>
+</ul>
+<h4 id="HTTPS-是如何建立连接的？其间交互了什么？"><a href="#HTTPS-是如何建立连接的？其间交互了什么？" class="headerlink" title="HTTPS 是如何建立连接的？其间交互了什么？"></a>HTTPS 是如何建立连接的？其间交互了什么？</h4><p>通过SSL&#x2F;TLS协议建立，也就是TLS握手阶段</p>
 <p><strong>TLS四次通信</strong></p>
 <p>第一次：客户端发送:（1）支持的TLS版本（2）生成的随机数（3）支持的加密算法。</p>
 <p>第二次：服务端发送:（1）确认TLS版本（不持支关闭加密通信）（2）生成的随机数（3）确认支持的加密算法（4）数字证书</p>
@@ -436,7 +474,7 @@ TLS四次通信
 <p>第四次：服务端发送:（1)确认更改（2）握手结束通知，发送总结，供校验</p>
 <p>在第二次的时候会进行服务器的数字证书验证：</p>
 <p>计算证书内容hash值，使用CA提供的公钥（通常浏览器和操作系统集成了CA公钥）对CA的签名进行解密，对比hash值是否相同，相同即证明可信赖。</p>
-<p>其中通过这三个随机数生成了最终的<strong>会话密钥</strong>（对称加密）</p>
+<p>其中-通过这三个随机数生成了最终的<strong>会话密钥</strong>（对称加密）</p>
 <p>证书验证过程通常存在<strong>证书信任链问题</strong>：</p>
 <p>如根证书-&gt;中间证书-&gt;百度证书三级</p>
 <p>一般用根证书的公钥去验证中间证书是否可信，再通过中间证书的公钥验证百度证书是否可信。</p>
@@ -451,7 +489,7 @@ TLS四次通信
 <p>（2）支持管道网络传输（请求发出去不必等返回就可再发送请求）</p>
 <h5 id="HTTP-2-做了什么优化？"><a href="#HTTP-2-做了什么优化？" class="headerlink" title="HTTP&#x2F;2 做了什么优化？"></a>HTTP&#x2F;2 做了什么优化？</h5><p>HTTP&#x2F;2是基于https</p>
 <p>（1）压缩头部：用索引号代替重复字段</p>
-<p>（2）二进制格式：head和body都变成二进制（帧）</p>
+<p>（2）二进制格式：head和body都变成二进制（帧frame）</p>
 <p>（3）并发传输：同一个tcp连接传多个stream（多个头＋体），即并行交错进行请求和响应，避免响应的队头阻塞</p>
 <p>（4）服务器推送：服务器主动发送信息给客户端</p>
 <h5 id="HTTP-3-做了哪些优化？"><a href="#HTTP-3-做了哪些优化？" class="headerlink" title="HTTP&#x2F;3 做了哪些优化？"></a>HTTP&#x2F;3 做了哪些优化？</h5><p>将TCP协议变成UDP协议，并且使用基于UDP的QUIC协议</p>
@@ -459,7 +497,7 @@ TLS四次通信
 <ul>
 <li>无队头堵塞（stream丢包，只堵塞这个流，不像HTTP&#x2F;2堵塞TCP整个队头）</li>
 <li>更快的连接方式（HTTP&#x2F;2先TCP握手，再TLS握手；HTTP&#x2F;3，QUIC握手里面包括了TLS内容）</li>
-<li>连接迁移（从数据连接切换到WIFI连接因为IP改变，所以TCP连接重新建立，耗时；HTTP&#x2F;3通过<strong>连接ID</strong>绑定通信端点，只要保留原上下文（连接ID，TLS密钥等），就可以继续原链接。）</li>
+<li>连接迁移（从数据连接切换到WIFI连接因为IP改变，所以TCP连接重新建立，耗时；HTTP&#x2F;3通过<strong>连接ID</strong>绑定通信的两个端点，只要保留原上下文（连接ID，TLS密钥等），就可以继续复用原连接。）</li>
 </ul>
 <p>QUIC是UDP上：伪TCP+TLS+HTTP&#x2F;2的多路复用协议</p>
 <p>注：<strong>SSL&#x2F;TLS1.2</strong>需要4次握手，<strong>SSL&#x2F;TLS1.3</strong>只需要3次握手</p>
@@ -593,7 +631,10 @@ TLS四次通信
 <li>3.8：<a target="_blank" rel="noopener" href="https://www.xiaolincoding.com/network/2_http/http_rpc.html#%E6%80%BB%E7%BB%93">https://www.xiaolincoding.com/network/2_http/http_rpc.html#%E6%80%BB%E7%BB%93</a></li>
 <li>3.9：<a target="_blank" rel="noopener" href="https://www.xiaolincoding.com/network/2_http/http_websocket.html#%E6%80%BB%E7%BB%93">https://www.xiaolincoding.com/network/2_http/http_websocket.html#%E6%80%BB%E7%BB%93</a></li>
 </ul>
-<h2 id="TCP篇"><a href="#TCP篇" class="headerlink" title="TCP篇"></a>TCP篇</h2><h3 id="4-1-TCP三次握手与四次挥手面试题"><a href="#4-1-TCP三次握手与四次挥手面试题" class="headerlink" title="4.1 TCP三次握手与四次挥手面试题"></a>4.1 TCP三次握手与四次挥手面试题</h3><h4 id="TCP基本认识"><a href="#TCP基本认识" class="headerlink" title="TCP基本认识"></a>TCP基本认识</h4><h5 id="UDP-和-TCP-有什么区别呢？分别的应用场景是？"><a href="#UDP-和-TCP-有什么区别呢？分别的应用场景是？" class="headerlink" title="UDP 和 TCP 有什么区别呢？分别的应用场景是？"></a>UDP 和 TCP 有什么区别呢？分别的应用场景是？</h5><p><strong>区别：</strong></p>
+<h2 id="TCP篇"><a href="#TCP篇" class="headerlink" title="TCP篇"></a>TCP篇</h2><h3 id="4-1-TCP三次握手与四次挥手面试题"><a href="#4-1-TCP三次握手与四次挥手面试题" class="headerlink" title="4.1 TCP三次握手与四次挥手面试题"></a>4.1 TCP三次握手与四次挥手面试题</h3><h4 id="TCP基本认识"><a href="#TCP基本认识" class="headerlink" title="TCP基本认识"></a>TCP基本认识</h4><h5 id="UDP-和-TCP-有什么区别呢？分别的应用场景是？"><a href="#UDP-和-TCP-有什么区别呢？分别的应用场景是？" class="headerlink" title="UDP 和 TCP 有什么区别呢？分别的应用场景是？"></a>UDP 和 TCP 有什么区别呢？分别的应用场景是？</h5><p><strong>TCP</strong>：（传输控制协议）是⼀种⾯向连接的、可靠的、基于字节流的传输层通信协议。</p>
+<p><strong>UDP</strong>：（⽤户数据报协议）为应⽤程序提供了⼀种⽆需建⽴连接就可以发送封装的IP数据包的⽅</p>
+<p>法。</p>
+<p><strong>区别：</strong></p>
 <ul>
 <li>连接<ul>
 <li>TCP面向连接、传输前要建立连接</li>
@@ -633,12 +674,12 @@ TLS四次通信
 </ul>
 <p><strong>应用场景</strong>：</p>
 <ul>
-<li>TCP<ul>
+<li>TCP：通信数据可靠<ul>
 <li>FTP文件传输</li>
-<li>HTPP&#x2F;HTTPS</li>
+<li>HTTP&#x2F;HTTPS</li>
 </ul>
 </li>
-<li>UDP<ul>
+<li>UDP：通信速度高<ul>
 <li>DNS，SNMP</li>
 <li>视频、音频等多媒体</li>
 <li>广播通信</li>
@@ -659,10 +700,10 @@ TLS四次通信
 <p>TCP 和UDP，在内核中是两个完全独立的软件模块。</p>
 <p>TCP和UDP各自端口号是独立的，他们的80端口是不一样的。</p>
 <p>注：后续还有更详细的内容</p>
-<h4 id="TCP-连接建立"><a href="#TCP-连接建立" class="headerlink" title="TCP 连接建立"></a>TCP 连接建立</h4><h5 id="TCP三次握手过程是怎么样的"><a href="#TCP三次握手过程是怎么样的" class="headerlink" title="TCP三次握手过程是怎么样的"></a>TCP三次握手过程是怎么样的</h5><p>SYN–&gt;ACK、SYN–&gt;ACK</p>
+<h4 id="TCP连接建立"><a href="#TCP连接建立" class="headerlink" title="TCP连接建立"></a>TCP连接建立</h4><h5 id="TCP三次握手过程是怎么样的"><a href="#TCP三次握手过程是怎么样的" class="headerlink" title="TCP三次握手过程是怎么样的"></a>TCP三次握手过程是怎么样的</h5><p>SYN–&gt;ACK、SYN–&gt;ACK</p>
 <ul>
-<li>第一次：客户端发送包文，里面的SYN置1，生成随机序列号（假设为A），不带应用层数据，自己状态变为SYN–SENT</li>
-<li>第二次：服务端发送包文，里面的ACK、SYN置1，生成随机序列号（假设为B），包文的确认应答号设为（A+1），不带应用层数据，自己状态变为SYN–RCVD</li>
+<li>第一次：客户端发送报文，里面的SYN置1，生成随机序列号（假设为A），不带应用层数据，自己状态变为SYN_SENT</li>
+<li>第二次：服务端发送报文，里面的ACK、SYN置1，生成随机序列号（假设为B），报文的确认应答号设为（A+1），不带应用层数据，自己状态变为SYN_RCVD</li>
 <li>第三次：客户端发送报文，ACK置1，确认应答号设为（B+1），可带应用层数据，状态设为ESTABLISHED</li>
 <li>服务端收到包文，状态也设为ESTABLISHED</li>
 </ul>
@@ -672,6 +713,7 @@ TLS四次通信
 <li><strong>避免历史连接</strong></li>
 </ol>
 <p>可能由于客户端宕机，第一次发送的请求就失效了，但是第一次发送的请求已经到达服务器，服务器就会返回一个对第一个连接的ACK。同时客户端已经发送了新的请求，接收到服务器对原来请求的ACK，发现不是新连接需要的。就会发送RET，这样服务器就知道原来的没用了，就会接收新的。避免了历史连接。</p>
+<p>+ </p>
 <ol start="2">
 <li><strong>同步双方初始序列号</strong></li>
 </ol>
@@ -722,7 +764,149 @@ TLS四次通信
 </ul>
 </li>
 </ul>
-
+<h4 id="TCP连接断开"><a href="#TCP连接断开" class="headerlink" title="TCP连接断开"></a>TCP连接断开</h4><h5 id="TCP四次挥手过程是怎么一样的？"><a href="#TCP四次挥手过程是怎么一样的？" class="headerlink" title="TCP四次挥手过程是怎么一样的？"></a>TCP四次挥手过程是怎么一样的？</h5><ol>
+<li><p>客户端发送FIN，进入<code>FIN_WAIT_1</code>状态</p>
+</li>
+<li><p>服务端收到FIN后，发送ACK，进入<code>CLOSE_WAIT</code>状态（客户端收到进入<code>FIN_WAIT_2</code>状态）</p>
+</li>
+<li><p>服务端处理完数据发送FIN,进入<code>LAST_ACK</code>状态</p>
+</li>
+<li><p>客户端发送ACK，进入<code>TIME_WAIT</code>状态</p>
+</li>
+</ol>
+<ul>
+<li>服务器收到ACK后进入<code>CLOSE</code>状态</li>
+<li>客户端经过<code>2MSL</code>一段时间后，自动进入<code>CLOSE</code>状态</li>
+</ul>
+<h5 id="为什么需要四次握手"><a href="#为什么需要四次握手" class="headerlink" title="为什么需要四次握手"></a>为什么需要四次握手</h5><ul>
+<li>因为服务端在发送ACK后一般还有数据需要处理，所以会等数据处理完再发送FIN，导致不是三次而是四次。</li>
+<li>但是特定情况下，可以是三次</li>
+<li>三次挥手：接收到FIN后没有其他数据要处理，并且<strong>TCP延迟确认机制</strong>开启了的，第二次和第三次挥手就会合并传输。<ul>
+<li>TCP延迟确认机制：主要目的是减少网络中ACK报文的数量，从而提高网络效率。其核心思想是：当接收方收到数据时，是等待一段时间（通常是200ms），看看是否有数据要发送给对端。如果有数据要发送，ACK可以和数据一起发送，从而减少单独的ACK报文。</li>
+</ul>
+</li>
+</ul>
+<h5 id="第一次丢失，会发生什么？"><a href="#第一次丢失，会发生什么？" class="headerlink" title="第一次丢失，会发生什么？"></a>第一次丢失，会发生什么？</h5><ul>
+<li>客户端触发超时重传机制，次数过了还是没响应直接关闭连接。（从<code>FIN_WAIT_1</code>–&gt;<code>CLOSE</code>）</li>
+</ul>
+<h5 id="第二次挥手丢失，会发生什么？"><a href="#第二次挥手丢失，会发生什么？" class="headerlink" title="第二次挥手丢失，会发生什么？"></a>第二次挥手丢失，会发生什么？</h5><ul>
+<li>ACK没有重传机制，相当于客户端还是没收到ACK。客户端同第一次丢失状态一样。</li>
+<li>服务端收到了FIN，所以处于<code>CLOSE_WAIT</code>状态</li>
+</ul>
+<h5 id="第三次挥手丢失，发生什么？"><a href="#第三次挥手丢失，发生什么？" class="headerlink" title="第三次挥手丢失，发生什么？"></a>第三次挥手丢失，发生什么？</h5><ul>
+<li>客户端收到第二次挥手的ACK后，会处于<code>FIN_WAIT_2</code>状态。这个状态默认持续时间为60秒，超时就会直接关闭连接。</li>
+<li>服务端发送了FIN没有响应就会触发超时重传机制，超过次数还是没有响应会直接断开连接。</li>
+</ul>
+<h5 id="第四次挥手丢失，发生什么？"><a href="#第四次挥手丢失，发生什么？" class="headerlink" title="第四次挥手丢失，发生什么？"></a>第四次挥手丢失，发生什么？</h5><ul>
+<li>客户端此时状态为<code>TIME_WAIT</code>，并且开启2MSL定时器。正常情况等待2MSL过后就关闭连接，但是因为服务端的超时重传会发送FIN，导致定时器会重置，直到成功或者次数用完，关闭连接。</li>
+<li>服务端处于<code>LAST_ACK</code>状态。触发超时重传机制，还是没收到ACK就直接关闭连接。</li>
+</ul>
+<h5 id="为什么-TIME-WAIT-等待的时间是-2MSL？"><a href="#为什么-TIME-WAIT-等待的时间是-2MSL？" class="headerlink" title="为什么 TIME_WAIT 等待的时间是 2MSL？"></a>为什么 TIME_WAIT 等待的时间是 2MSL？</h5><p>MSL：报文最大生存时间</p>
+<p>TTL：IP数据包可以经过最大路由数，每经过一个就减1，为0时直接被丢弃，并且发送ICMP报文给源主机。</p>
+<p>MSL的时间是大于TTL消耗完的时间。2MLS实际上就是至少允许报文丢失一次。</p>
+<h5 id="为什么需要TIME-WAIT状态？"><a href="#为什么需要TIME-WAIT状态？" class="headerlink" title="为什么需要TIME_WAIT状态？"></a>为什么需要TIME_WAIT状态？</h5><p>主动发起关闭的一方，才有<code>TIME-WAIT</code>状态</p>
+<ul>
+<li>防止历史连接中的数据，被后面相同的四元组连接错误的接收<ul>
+<li>2MSL足够让两个方向的数据包都丢弃，使原来连接的数据都自然消失，再出现的数据都是在新连接上建立的。</li>
+</ul>
+</li>
+<li>保证被动关闭连接的一方，能被正确的关闭<ul>
+<li>如果没有<code>TIME-WAIT</code>状态，客户端发完ACK后直接进入<code>CLOSE</code>状态。如果服务端没收到ACK，重发FIN，客户端会返回RET报文。服务端会认为是一个错误。为了防止这种情况发生，就有了这个状态。</li>
+</ul>
+</li>
+</ul>
+<h5 id="TIME-WAIT-过多有什么危害？"><a href="#TIME-WAIT-过多有什么危害？" class="headerlink" title="TIME_WAIT 过多有什么危害？"></a>TIME_WAIT 过多有什么危害？</h5><ul>
+<li>占用系统资源</li>
+<li>占用端口资源</li>
+</ul>
+<p>服务端：只占用系统资源，因为服务端只监听一个端口。且一个TCP连接由四元组唯一确定。</p>
+<p>客户端：如果占满了所有端口资源，就无法跟[目标IP+目标端口]一样的服务器发起连接了。</p>
+<h5 id="如何优化-TIME-WAIT？"><a href="#如何优化-TIME-WAIT？" class="headerlink" title="如何优化 TIME_WAIT？"></a>如何优化 TIME_WAIT？</h5><ul>
+<li>net.ipv4.tcp_tw_reuse 和 tcp_timestamps</li>
+<li>net.ipv4.tcp_max_tw_buckets</li>
+<li>程序中使用 SO_LINGER</li>
+</ul>
+<p>具体细节：<a target="_blank" rel="noopener" href="https://www.xiaolincoding.com/network/3_tcp/tcp_interview.html#%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96-time-wait">https://www.xiaolincoding.com/network/3_tcp/tcp_interview.html#%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96-time-wait</a></p>
+<h5 id="服务器出现大量-TIME-WAIT-状态的原因有哪些？"><a href="#服务器出现大量-TIME-WAIT-状态的原因有哪些？" class="headerlink" title="服务器出现大量 TIME_WAIT 状态的原因有哪些？"></a>服务器出现大量 TIME_WAIT 状态的原因有哪些？</h5><ul>
+<li>HTTP没有使用长连接<ul>
+<li>无论是客户端还是服务端在header中有<code>Connection:close</code>，就无法使用长连接，都会由服务端在完成响应后主动关闭连接。</li>
+</ul>
+</li>
+<li>HTTP长连接超时<ul>
+<li>一般为了避免浪费资源，会设置一个长连接的超时时间。如果客户端完成一个HTTP请求后，在这个时间内都没发起新的请求，客户端就会关闭连接。</li>
+</ul>
+</li>
+<li>HTTP长连接的请求数量达到上限<ul>
+<li>一般web服务端一条长连接会设置最大HTTP请求数量，达到最大值，就会主动断开连接。</li>
+</ul>
+</li>
+</ul>
+<h5 id="服务器出现大量-CLOSE-WAIT-状态的原因有哪些？"><a href="#服务器出现大量-CLOSE-WAIT-状态的原因有哪些？" class="headerlink" title="服务器出现大量 CLOSE_WAIT 状态的原因有哪些？"></a>服务器出现大量 CLOSE_WAIT 状态的原因有哪些？</h5><ul>
+<li><code>CLOSE_WAIT</code>状态只有被动关闭方才有，并且如果没调用close函数关闭连接，就无法发送FIN报文，无法从<code>CLOSE_WAIT</code>—&gt;<code>LAST_ACK</code>状态</li>
+</ul>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://www.xiaolincoding.com/network/3_tcp/tcp_interview.html#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F-time-wait-%E7%8A%B6%E6%80%81%E7%9A%84%E5%8E%9F%E5%9B%A0%E6%9C%89%E5%93%AA%E4%BA%9B">https://www.xiaolincoding.com/network/3_tcp/tcp_interview.html#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%87%BA%E7%8E%B0%E5%A4%A7%E9%87%8F-time-wait-%E7%8A%B6%E6%80%81%E7%9A%84%E5%8E%9F%E5%9B%A0%E6%9C%89%E5%93%AA%E4%BA%9B</a></p>
+<h5 id="如果已经建立了连接，但是客户端突然出现故障了怎么办？"><a href="#如果已经建立了连接，但是客户端突然出现故障了怎么办？" class="headerlink" title="如果已经建立了连接，但是客户端突然出现故障了怎么办？"></a>如果已经建立了连接，但是客户端突然出现故障了怎么办？</h5><ul>
+<li>TCP有一个保活机制。过了一段时间没有活动就会发送探测报文，发了几次还是没响应就会认为TCP连接已经死亡，并且系统内核将信息发送给应用层程序。</li>
+<li>需要在socket接口设置<code>SO_KEEPALIVE</code>保活机制才生效</li>
+<li>但是保活机制时间过长，可以在应用层自己设置一个心跳机制，超时就释放连接。</li>
+</ul>
+<h5 id="如果已经建立了连接，但是服务端的进程崩溃会发生什么？"><a href="#如果已经建立了连接，但是服务端的进程崩溃会发生什么？" class="headerlink" title="如果已经建立了连接，但是服务端的进程崩溃会发生什么？"></a>如果已经建立了连接，但是服务端的进程崩溃会发生什么？</h5><ul>
+<li>因为TCP信息由内核维护，所以崩了过后内核会回收所有该进程TCP连接，发送FIN报文，完成四次挥手。</li>
+</ul>
+<h4 id="Socket编程"><a href="#Socket编程" class="headerlink" title="Socket编程"></a>Socket编程</h4><h5 id="针对-TCP-应该如何-Socket-编程？"><a href="#针对-TCP-应该如何-Socket-编程？" class="headerlink" title="针对 TCP 应该如何 Socket 编程？"></a>针对 TCP 应该如何 Socket 编程？</h5><ul>
+<li>初始化时，得到文件描述符</li>
+<li>服务端<code>accept</code>返回用于传输得<code>socket</code>的文件描述符</li>
+<li>监听的socket和连接的socket是两个</li>
+</ul>
+<h5 id="listen-时候参数-backlog-的意义？"><a href="#listen-时候参数-backlog-的意义？" class="headerlink" title="listen 时候参数 backlog 的意义？"></a>listen 时候参数 backlog 的意义？</h5><ul>
+<li>Linux内核维护两个队列<ul>
+<li>半连接队列（SYN队列）</li>
+<li>全连接队列（Accept队列）</li>
+</ul>
+</li>
+<li>早期backlog是半连接队列大小，现在通常是全连接队列长度。</li>
+</ul>
+<h5 id="accept-发生在三次握手的哪一步？"><a href="#accept-发生在三次握手的哪一步？" class="headerlink" title="accept 发生在三次握手的哪一步？"></a>accept 发生在三次握手的哪一步？</h5><ul>
+<li>发生在第三次握手后，因为此时服务端成功建立连接</li>
+</ul>
+<h5 id="客户端调用-close-了，连接是断开的流程是什么？"><a href="#客户端调用-close-了，连接是断开的流程是什么？" class="headerlink" title="客户端调用 close 了，连接是断开的流程是什么？"></a>客户端调用 close 了，连接是断开的流程是什么？</h5><ul>
+<li>客户端：发送FIN（变为FIN_WAIT_1）—&gt;收到ACK（变为FIN_WAIT_2）—&gt;收到FIN（发送ACK、变为TIME_WAIT）—&gt;等待2MSL变为CLOSE</li>
+<li>服务端：收到FIN（发送ACK、变为CLOSE_WAIT）—&gt;读到EOF后，调用close，发送FIN（变为LAST_ACK）—&gt;收到ACK（变为CLOSE）</li>
+</ul>
+<h5 id="没有-accept，能建立-TCP-连接吗？"><a href="#没有-accept，能建立-TCP-连接吗？" class="headerlink" title="没有 accept，能建立 TCP 连接吗？"></a>没有 accept，能建立 TCP 连接吗？</h5><ul>
+<li>可以的</li>
+</ul>
+<h5 id="没有-listen，能建立-TCP-连接吗"><a href="#没有-listen，能建立-TCP-连接吗" class="headerlink" title="没有 listen，能建立 TCP 连接吗"></a>没有 listen，能建立 TCP 连接吗</h5><ul>
+<li>可以的</li>
+</ul>
+<h3 id="4-2-TCP-重传、滑动窗口、流量控制、拥塞控制"><a href="#4-2-TCP-重传、滑动窗口、流量控制、拥塞控制" class="headerlink" title="4.2 TCP 重传、滑动窗口、流量控制、拥塞控制"></a>4.2 TCP 重传、滑动窗口、流量控制、拥塞控制</h3><h4 id="重传机制"><a href="#重传机制" class="headerlink" title="重传机制"></a>重传机制</h4><h5 id="超时重传"><a href="#超时重传" class="headerlink" title="超时重传"></a>超时重传</h5><p>超时重传时间（RTO）略大于报文往返时间（RTT）</p>
+<p>RTT和RTO是一个动态变化的值</p>
+<h5 id="快速重传"><a href="#快速重传" class="headerlink" title="快速重传"></a>快速重传</h5><ul>
+<li>不以时间为驱动，以数据驱动重传</li>
+<li>存在重传一个还是重传所有的问题，引出了SACK方法</li>
+</ul>
+<h5 id="SACK方法"><a href="#SACK方法" class="headerlink" title="SACK方法"></a>SACK方法</h5><ul>
+<li>选择性确认</li>
+</ul>
+<h5 id="D-SACK方法"><a href="#D-SACK方法" class="headerlink" title="D-SACK方法"></a>D-SACK方法</h5><ul>
+<li>使用SACK告诉发送方哪些数据被重复接收了</li>
+</ul>
+<h4 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h4><h4 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h4><h5 id="操作系统缓冲区与滑动窗口的关系"><a href="#操作系统缓冲区与滑动窗口的关系" class="headerlink" title="操作系统缓冲区与滑动窗口的关系"></a>操作系统缓冲区与滑动窗口的关系</h5><ul>
+<li>为了防止丢包，TCP不允许同时减少缓存又收缩窗口。采用先收缩，过段时间再减少窗口</li>
+</ul>
+<h5 id="窗口关闭"><a href="#窗口关闭" class="headerlink" title="窗口关闭"></a>窗口关闭</h5><p>会造成的潜在死锁现象：当接收方的窗口再次打开，发送报文通知时，如果丢包，就会时双方一直陷入等待状态。</p>
+<p>解决方法：设置一个定时，当窗口为0后开始计时，超时了就进行报文探测。</p>
+<h5 id="糊涂窗口综合症"><a href="#糊涂窗口综合症" class="headerlink" title="糊涂窗口综合症"></a>糊涂窗口综合症</h5><h4 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h4><p>拥塞窗口是发送方控制的</p>
+<p>加入拥塞窗口概念后，发送窗口值&#x3D;min(拥塞窗口，接收窗口)</p>
+<p>拥塞控制主要是四种算法：</p>
+<ul>
+<li>慢启动：cwnd指数增长</li>
+<li>拥塞避免：cwnd线性增长</li>
+<li>拥塞发送</li>
+<li>快速恢复</li>
+</ul>
+<h3 id="4-3-TCP实战抓包分析"><a href="#4-3-TCP实战抓包分析" class="headerlink" title="4.3 TCP实战抓包分析"></a>4.3 TCP实战抓包分析</h3><h3 id="4-4-TCP半连接和全连接队列"><a href="#4-4-TCP半连接和全连接队列" class="headerlink" title="4.4 TCP半连接和全连接队列"></a>4.4 TCP半连接和全连接队列</h3>
                 
             </div>
             <hr/>
@@ -1156,7 +1340,7 @@ TLS四次通信
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2024</span>
+                <span id="year">2024-2025</span>
             
             <a href="/about" target="_blank">OneBy</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
