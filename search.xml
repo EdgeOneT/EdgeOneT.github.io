@@ -73,19 +73,6 @@
     
     
     <entry>
-      <title></title>
-      <link href="/2025/03/16/ba-gu-su-ji-ban/"/>
-      <url>/2025/03/16/ba-gu-su-ji-ban/</url>
-      
-        <content type="html"><![CDATA[<h1 id="八股速记版"><a href="#八股速记版" class="headerlink" title="八股速记版"></a>八股速记版</h1><ol start="4"><li><strong>TCP与UDP的概念，特点，区别和对应的使用场景</strong></li></ol><p><strong>概念</strong></p><p><strong>TCP</strong>：（传输控制协议）是⼀种面向连接的、可靠的、基于字节流的传输层通信协议。</p><p><strong>UDP</strong>：（用户数据报协议）为应用程序提供了⼀种无需建立连接就可以发送封装的IP数据包的方法。</p><p><strong>特点</strong></p><p>TCP ：面向连接，传输可靠，传输形式为字节流，传输效率慢，所需资源多。</p><p>UDP ：无连接、传输不可靠、传输形式为数据报文段，传输效率快，所需资源少。</p><p><strong>区别：</strong>（7个方面）</p><ul><li><p>连接</p><ul><li>TCP面向连接、传输前要建立连接</li><li>UDP直接传输</li></ul></li><li><p>可靠性</p><ul><li><p>TCP传输可靠数据</p></li><li><p>UDP不保证（但是可通过QUIC等协议实现可靠传输）</p></li></ul></li><li><p>服务对象</p><ul><li>TCP一对一</li><li>UDP一对一、一对多、多对多</li></ul></li><li><p>拥塞控制、流量控制</p><ul><li>TCP有，保证数据安全</li><li>UDP无，网络再堵，不影响它发送</li></ul></li><li><p>首部开销</p><ul><li>TCP首部可变（20~60字节，开销大）</li><li>UDP固定不变（8个字节，开销小）</li></ul></li><li><p>传输方式</p><ul><li>TCP：流式传输，无边界，可保证顺序和可靠</li><li>UDP：包发送，有边界，可能丢包和乱序<ul><li>无边界就是指TCP将数据视为连续的字节流，比如<code>helloworld</code></li></ul></li></ul></li><li><p>分片不同</p><ul><li>TCP的数据大于MSS，传输层分片</li><li>UDP的数据大于MTU，IP层分片<ul><li>MSS：除去 IP 和 TCP 头部之后，一个网络包所能容纳的 TCP 数据的最大长度</li><li>MTU：一个网络包的最大长度，以太网中一般为 1500 字节</li></ul></li></ul></li></ul><p><strong>应用场景</strong>：</p><ul><li>TCP：通信数据可靠的场景<ul><li>FTP文件传输</li><li>HTTP&#x2F;HTTPS</li></ul></li><li>UDP：通信速度高的场景<ul><li>DNS，SNMP</li><li>视频、音频等多媒体通信</li><li>广播通信</li></ul></li></ul><ol start="5"><li>HTTP请求常见状态码和字段</li></ol><p>在 HTTP 协议中：</p><ul><li><strong>HEAD 请求</strong>：它和 GET 请求类似，主要区别在于 HEAD 请求仅要求服务器返回 HTTP 响应头信息，而不返回响应体（body）数据。比如想获取某个网页的元信息（如内容类型、修改时间等），使用 HEAD 请求能快速获取，无需下载整个页面内容，节省带宽和时间。</li><li><strong>body 数据</strong>：即响应体数据，是服务器响应中包含实际内容的部分 。像访问一个网页，body 里可能是网页的 HTML 代码；请求 API 获取数据时，body 里可能是 JSON 或 XML 格式的具体业务数据。</li></ul>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>轮子项目-gCache</title>
       <link href="/2025/02/27/geecache/"/>
       <url>/2025/02/27/geecache/</url>
